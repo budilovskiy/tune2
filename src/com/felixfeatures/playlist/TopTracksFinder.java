@@ -30,9 +30,9 @@ public class TopTracksFinder {
 
 
 	private static URL getLastFmRequestURL(String searchString, String searchMethod) throws MalformedURLException, UnsupportedEncodingException {
-		int averageRequestLength = 400;
+		int averageRequestLength = 400;	// Maximum average request length
 		searchString = URLEncoder.encode(searchString, "UTF-8");
-	        StringBuilder sb = new StringBuilder(averageRequestLength);
+	        StringBuilder sb = new StringBuilder(averageRequestLength);	// initial capacity specified by the capacity argument
 	        sb.append("http://ws.audioscrobbler.com/2.0/");
 	        sb.append("?method=");
 	        sb.append(searchMethod + ".gettoptracks");
@@ -71,7 +71,7 @@ public class TopTracksFinder {
 		}
 		String result = sb.toString();
 
-		// Parse JSON to get track URL according to track duration
+		// Parse JSON to get JSONArray
 		JSONParser parser = new JSONParser();
 		JSONObject jsonResponse = (JSONObject) parser.parse(result);
 		JSONObject toptracks = (JSONObject) jsonResponse.get("toptracks");
@@ -95,8 +95,11 @@ public class TopTracksFinder {
 					}
 				}
 			}
+			String artistName = artist.get("name").toString();
+			String trackName = track.get("name").toString();
+			String trackduration = track.get("duration").toString();
 			String imageURL = (image == null) ? "" : image.get("#text").toString();
-			topTracks[i] = new Track(artist.get("name").toString(), track.get("name").toString(), track.get("duration").toString(), imageURL);
+			topTracks[i] = new Track(artistName, trackName, trackduration, imageURL);
 		}
 		return topTracks;
 	}
