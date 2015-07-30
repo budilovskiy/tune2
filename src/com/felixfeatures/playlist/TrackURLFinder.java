@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
 
 /**
  * Provides static methods that perform search of the URL of tracks location at
- * vk.com
+ * vk.com using API
  */
 public class TrackURLFinder {
 
@@ -25,7 +25,7 @@ public class TrackURLFinder {
 	private final static String VK_API_TOKEN = "8***3";
 
 	/**
-	 * Builds and returns URL searching request of the given track to vk.com.
+	 * Builds and returns URL searching request of the given track to vk.com API.
 	 * See VK API documentation https://vk.com/pages?oid=-1&p=audio.search
 	 * 
 	 * @param searchQuery
@@ -101,7 +101,7 @@ public class TrackURLFinder {
 	 *            - String representation of track: "Artist - Name"
 	 * @param duration
 	 *            - duration of track
-	 * @return URL of the location of the given track
+	 * @return URL of the location of the given track with given duration
 	 * @throws IOException
 	 * @throws ParseException
 	 */
