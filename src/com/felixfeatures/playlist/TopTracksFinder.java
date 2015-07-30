@@ -51,7 +51,6 @@ public class TopTracksFinder {
         sb.append("&api_key=");
         sb.append(LAST_FM_API_KEY);
         sb.append("&format=json");
-        System.out.println(sb);
         return new URL(sb.toString());
 	}
 	
