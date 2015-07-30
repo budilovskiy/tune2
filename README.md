@@ -2,7 +2,7 @@
 Project is at development stage now.
 
 Fully redesigned architecture and UI
-- using array to hold Tracks in playlist to improve speed
-- using JSON from Last.fm and vk.com APIs instead XML to improve speed
+- using array to hold tracks in playlist to improve speed
+- using response from last.fm and vk.com APIs in JSON format instead XML to improve speed while parsing
 - added image and duration of track
-- searching track URL at vk.com according to duration
+- searching URL of track at vk.com according to its duration (received from last.fm API) to exclude remixes and false tracks
