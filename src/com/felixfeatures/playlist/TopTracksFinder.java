@@ -32,26 +32,26 @@ public class TopTracksFinder {
 	private static URL getLastFmRequestURL(String searchString, String searchMethod) throws MalformedURLException, UnsupportedEncodingException {
 		int averageRequestLength = 400;
 		searchString = URLEncoder.encode(searchString, "UTF-8");
-        StringBuilder sb = new StringBuilder(averageRequestLength);
-        sb.append("http://ws.audioscrobbler.com/2.0/");
-        sb.append("?method=");
-        sb.append(searchMethod + ".gettoptracks");
-        switch (searchMethod) {
-            case "tag":
-                sb.append("&tag=");
-                sb.append(searchString);
-                break;
-            case "artist":
-                sb.append("&artist=");
-                sb.append(searchString);
-                break;
-        }
-        sb.append("&limit=");
-        sb.append(LAST_FM_LIMIT_OF_TRACKS);
-        sb.append("&api_key=");
-        sb.append(LAST_FM_API_KEY);
-        sb.append("&format=json");
-        return new URL(sb.toString());
+	        StringBuilder sb = new StringBuilder(averageRequestLength);
+	        sb.append("http://ws.audioscrobbler.com/2.0/");
+	        sb.append("?method=");
+	        sb.append(searchMethod + ".gettoptracks");
+	        switch (searchMethod) {
+	            case "tag":
+	                sb.append("&tag=");
+	                sb.append(searchString);
+	                break;
+	            case "artist":
+	                sb.append("&artist=");
+	                sb.append(searchString);
+	                break;
+	        }
+	        sb.append("&limit=");
+	        sb.append(LAST_FM_LIMIT_OF_TRACKS);
+	        sb.append("&api_key=");
+	        sb.append(LAST_FM_API_KEY);
+	        sb.append("&format=json");
+	        return new URL(sb.toString());
 	}
 	
 	private static JSONArray parse(URL url) throws IOException, ParseException {
