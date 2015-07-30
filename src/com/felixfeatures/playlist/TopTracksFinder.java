@@ -28,7 +28,6 @@ public class TopTracksFinder {
 	private static final int LAST_FM_LIMIT_OF_TRACKS = 100;
 	private static final String LAST_FM_API_KEY = "c***b";
 
-
 	private static URL getLastFmRequestURL(String searchString, String searchMethod) throws MalformedURLException, UnsupportedEncodingException {
 		int averageRequestLength = 400;	// Maximum average request length
 		searchString = URLEncoder.encode(searchString, "UTF-8");
