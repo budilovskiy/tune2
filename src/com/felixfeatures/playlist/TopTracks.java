@@ -36,4 +36,6 @@ public class TopTracks {
 		return size;
 	}
 	
+	// написать итератор, toString
+	
 }
