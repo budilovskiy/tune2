@@ -27,7 +27,7 @@ public class TopTracksFinder {
 	
 	private static final int LAST_FM_LIMIT_OF_TRACKS = 100;
 	private static final String LAST_FM_API_KEY = "c***b";
-	private Track[] topTracks;
+	private TopTracks playlist;
 	
 	private static URL getLastFmRequestURL(String searchString, String searchMethod) throws MalformedURLException, UnsupportedEncodingException {
 		int averageRequestLength = 400;	// Maximum average request length
@@ -79,10 +79,9 @@ public class TopTracksFinder {
 	}
 
 	public static void getTopTracksFromLastFm(String searchString, String searchMethod) throws IOException, ParseException {
-		topTracks = new Track[LAST_FM_LIMIT_OF_TRACKS];
+		playlist = new TopTracks(LAST_FM_LIMIT_OF_TRACKS);
 		URL requestURL = getLastFmRequestURL(searchString, searchMethod);
 		JSONArray tracklist = (JSONArray) parse(requestURL);
-		Track[] topTracks = new Track[LAST_FM_LIMIT_OF_TRACKS];
 		for (int i = 0; i < tracklist.size(); i++) {
 			JSONObject track = (JSONObject) tracklist.get(i);
 			JSONObject artist = (JSONObject) track.get("artist");
@@ -105,8 +104,8 @@ public class TopTracksFinder {
 		
 	}
 	
-	public Track[] getTopTracks() {
-		return topTracks;
+	public TopTracks getPlaylist() {
+		return playlist;
 	}
 	
 }
