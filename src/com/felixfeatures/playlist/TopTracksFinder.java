@@ -1,37 +1,50 @@
-/**
- * Receives top tracks from last.fm API service
- */
 package com.felixfeatures.playlist;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Arrays;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
+import com.felixfeatures.util.JSONUtil;
 
 /**
- * @author Maxim
+ * Class provides static methods to search top tracks according to last.fm charts.
+ * This is the main creator of playlists in application
+ * See last.fm API documentation: http://www.lastfm.ru/api/intro
  *
  */
 public class TopTracksFinder {
 	
+	// Constant variable for the size of last.fm charts. Must be greater than 1;
 	private static final int LAST_FM_LIMIT_OF_TRACKS = 100;
-	private static final String LAST_FM_API_KEY = "c***b";
+	private static final String LAST_FM_API_KEY = "ce021b6cb5cb325de823959093b8854b";
 	
-	private static URL getLastFmRequestURL(String searchString, String searchMethod) throws MalformedURLException, UnsupportedEncodingException {
+	/**
+	 * Build request URL to last.fm
+	 * See last.fm API documentation
+	 * 
+	 * @param searchString - search query (e.g. artist name or tag)
+	 * @param searchMethod - search method. "tag" or "artist"
+	 * @return request URL to last.fm search API 
+	 * @throws IllegalArgumentException
+	 * @throws MalformedURLException
+	 * @throws UnsupportedEncodingException
+	 */
+	private static URL getLastFmRequestURL(String searchString, String searchMethod)
+			throws IllegalArgumentException, MalformedURLException, UnsupportedEncodingException {
+		
+		if (searchString.equals("") || searchString == null) {
+			throw new IllegalArgumentException("Search query is empty or null");
+		}
+		
 		int averageRequestLength = 400;	// Maximum average request length
+		
 		searchString = URLEncoder.encode(searchString, "UTF-8");
-	        StringBuilder sb = new StringBuilder(averageRequestLength);	// initial capacity specified by the capacity argument
+	        StringBuilder sb = new StringBuilder(averageRequestLength);	// initial capacity of StringBuilder specified by the capacity argument
 	        sb.append("http://ws.audioscrobbler.com/2.0/");
 	        sb.append("?method=");
 	        sb.append(searchMethod + ".gettoptracks");
@@ -44,6 +57,8 @@ public class TopTracksFinder {
 	                sb.append("&artist=");
 	                sb.append(searchString);
 	                break;
+	            default :
+	            	throw new IllegalArgumentException("Search method must be \"artist\" or \"tag\"");
 	        }
 	        sb.append("&limit=");
 	        sb.append(LAST_FM_LIMIT_OF_TRACKS);
@@ -53,34 +68,21 @@ public class TopTracksFinder {
 	        return new URL(sb.toString());
 	}
 	
-	private static JSONArray parse(URL url) throws IOException, ParseException {
-
-		// Open connection
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-		// Receive JSON as String with search results
-		InputStream responseIS = connection.getInputStream();
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				responseIS, "UTF-8"));
-		StringBuilder sb = new StringBuilder();
-
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			sb.append(line + "\n");
-		}
-		String result = sb.toString();
-
-		// Parse JSON to get JSONArray
-		JSONParser parser = new JSONParser();
-		JSONObject jsonResponse = (JSONObject) parser.parse(result);
-		JSONObject toptracks = (JSONObject) jsonResponse.get("toptracks");
-		return (JSONArray) toptracks.get("track");
-	}
-
-	public static TopTracks getTopTracksFromLastFm(String searchString, String searchMethod) throws IOException, ParseException {
+	/**
+	 * Get top tracks from last.fm by music tag or artist name using API
+	 * 
+	 * @param searchString - search query (e.g. artist name or tag)
+	 * @param searchMethod - search method. "tag" or "artist"
+	 * @return TopTracks collection of Track instances
+	 * @throws IOException
+	 *             from JSONUtil.parse()
+	 */
+	public static TopTracks getTopTracksFromLastFm(String searchString, String searchMethod) throws IOException {
+		
 		TopTracks topTracks = new TopTracks(LAST_FM_LIMIT_OF_TRACKS);
 		URL requestURL = getLastFmRequestURL(searchString, searchMethod);
-		JSONArray tracklist = (JSONArray) parse(requestURL);
+		JSONArray tracklist = (JSONArray) JSONUtil.parse(requestURL);
+
 		for (int i = 0; i < tracklist.size(); i++) {
 			JSONObject track = (JSONObject) tracklist.get(i);
 			JSONObject artist = (JSONObject) track.get("artist");
@@ -96,8 +98,8 @@ public class TopTracksFinder {
 			}
 			String artistName = artist.get("name").toString();
 			String trackName = track.get("name").toString();
-			String trackduration = track.get("duration").toString();
-			String imageURL = (image == null) ? "" : image.get("#text").toString();
+			String trackduration = (track.get("duration").toString().equals("")) ? "0" : track.get("duration").toString();
+			String imageURL = (image == null) ? null : image.get("#text").toString();
 			topTracks.add(new Track(artistName, trackName, trackduration, imageURL));
 		}
 		return topTracks;
