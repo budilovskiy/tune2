@@ -21,7 +21,7 @@ public class TopTracksFinder {
 	
 	// Constant variable for the size of last.fm charts. Must be greater than 1;
 	private static final int LAST_FM_LIMIT_OF_TRACKS = 100;
-	private static final String LAST_FM_API_KEY = "ce021b6cb5cb325de823959093b8854b";
+	private static final String LAST_FM_API_KEY = "c***b";
 	
 	/**
 	 * Build request URL to last.fm
