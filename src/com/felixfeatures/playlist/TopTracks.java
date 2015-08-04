@@ -37,8 +37,8 @@ public class TopTracks {
 		if (capacity < 0) {
 			throw new IllegalArgumentException(
 					"Violation of precondition. TopTracks(int capacity):"
-							+ "capacity must be greater than 0. Value of capacity: "
-							+ capacity);
+						+ "capacity must be greater than 0. Value of capacity: "
+						+ capacity);
 		}
 		tracks = new Track[capacity];
 		size = 0;
@@ -78,10 +78,9 @@ public class TopTracks {
 	 */
 	public boolean add(Track track) {
 		if (size > tracks.length) {
-			System.out
-					.println("Overflow. TopTracks.add(Track track):"
-							+ "Size  of collection exceeded it's capacity. Value of collection: "
-							+ tracks.length + "Size: " + size);
+			System.out.println("Overflow. TopTracks.add(Track track):"
+						+ "Size  of collection exceeded it's capacity. Value of collection: "
+						+ tracks.length + "Size: " + size);
 			return false;
 		}
 		tracks[size++] = track;
