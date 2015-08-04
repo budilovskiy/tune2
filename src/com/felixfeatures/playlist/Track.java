@@ -2,10 +2,8 @@ package com.felixfeatures.playlist;
 
 import java.io.IOException;
 
-import org.json.simple.parser.ParseException;
-
 /**
- * Class provides JavaBean of Track
+ * Class provides simple bean of Track representation
  */
 public class Track {
 	private String artist; // track artist
@@ -14,7 +12,15 @@ public class Track {
 	private String imageURL; // URL of track image location
 	private String URL; // URL of track location
 
-	public Track(String artist, String name, String duration, String imageURL) {
+	/**
+	 * Constructor have default access modifier to access it only within package
+	 * 
+	 * @param artist
+	 * @param name
+	 * @param duration
+	 * @param imageURL
+	 */
+	Track(String artist, String name, String duration, String imageURL) {
 		this.artist = artist;
 		this.name = name;
 		this.duration = Integer.parseInt(duration);
@@ -59,23 +65,22 @@ public class Track {
 		this.imageURL = imageURL;
 	}
 
-	public String getURL() {
+	/**
+	 * Automatically set URL of Track instance using the static method of
+	 * TrackURLFinder.getURLfromVK(String fullTrackName, double duration)
+	 * and returns this value.
+	 * 
+	 * @return URL of Track instance
+	 * @throws IOException
+	 *             if it is not possible to get track URL
+	 */
+	public String getURL() throws IOException {
+		if (URL == null) {
+			this.URL = TrackURLFinder.getURLfromVK(this.toString(), duration);
+		}
 		return URL;
 	}
 
-	/**
-	 * Automatically set URL of Track instance using the static method of
-	 * TrackURLFinder class getURLfromVK(String fullTrackName, double duration)
-	 * 
-	 * @throws IOException
-	 *             if it is not possible to get track URL
-	 * @throws ParseException
-	 */
-	public void setURL() throws IOException, ParseException {
-		URL = TrackURLFinder.getURLfromVK(this.toString(), duration);
-	}
-
-	// Manual setting of URL
 	public void setURL(String URL) {
 		this.URL = URL;
 	}
@@ -86,8 +91,8 @@ public class Track {
 	}
 
 	public String fullInfoToString() {
-		return artist + " - " + name + " : " + duration + "\nURL: " + URL
-				+ "\nimage: " + imageURL;
+		return artist + " - " + name + " : " + duration + " seconds"
+				+ "\nURL: " + URL + "\nimage: " + imageURL;
 	}
 
 	@Override
