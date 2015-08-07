@@ -21,7 +21,7 @@ public class AppGUI extends JFrame {
   	getContentPane().add(closelabel); // add to main frame
   	
   	//
-  	// Create search TextField and set behavior
+  	// Create search JTextField and set behavior
   	//
   	searchField = new JTextField();
   	searchField.setFont(new java.awt.Font("Calibri", 0, 12)); // set font
@@ -29,7 +29,7 @@ public class AppGUI extends JFrame {
   	searchField.setText(DEFAULT_SEARCH_TEXT);	// set default text
   	searchField.setCursor(new Cursor(Cursor.TEXT_CURSOR));	// set cursor
   	searchField.setOpaque(false);	// transparent
-  	searchField.setBorder(new java.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0)); // set empty border
+  	searchField.setBorder(new java.swing.BorderFactory.createEmptyBorder()); // set empty border
   	// focus
   	searchField.addFocusListener(new FocusAdapter() {
   		@Override
@@ -66,6 +66,53 @@ public class AppGUI extends JFrame {
   	getContentPane().add(searchLabel); // add to main frame
   	
   	//
+  	// Create artist JTextField
+  	//
+  	artistField = new JTextField();
+  	artistField.setEditable(false);	// non-editable
+  	artistField.setFont(new java.awt.Font("Calibri", java.awt.Font.BOLD, 14)); // set font style
+  	artistField.setForeground(105, 105, 105);	// set font color
+  	artistField.setOpaque(false);	// transparent
+  	artistField.setBackground(new Color(0,0,0,0));
+  	artistField.setBorder(new java.swing.BorderFactory.createEmptyBorder()); // set empty border
+  	artistField.setCursor(new Cursor(Cursor.TEXT_CURSOR));	// set coursor style
+  	artistField.setHorizontalAlignment(JTextField.CENTER);	// centered alignment
+  	artistField.setBounds(305, 80, 290, 20); // set absolute position and size
+  	getContentPane().add(artistField); // add to main frame
+  	
+  	//
+  	// Create track name JTextArea
+  	//
+  	nameField = new JTextArea();
+  	nameField.setEditable(false);	// non-editable
+  	nameField.setFont(new java.awt.Font("Calibri", 0, 12)); // set font style
+  	nameField.setForeground(105, 105, 105);	// set font color
+  	nameField.setLineWrap(true);	// wrap text
+  	nameField.setWrapStyleWord(true);
+  	nameField.setOpaque(false);	// transparent
+  	nameField.setBackground(new Color(0,0,0,0));
+  	nameField.setBorder(new java.swing.BorderFactory.createEmptyBorder()); // set empty border
+  	nameField.setCursor(new Cursor(Cursor.TEXT_CURSOR));	// set coursor style
+  	nameField.setHorizontalAlignment(JTextField.CENTER);	// centered alignment
+  	nameField.setBounds(305, 100, 290, 40); // set absolute position and size
+  	getContentPane().add(nameField); // add to main frame
+  	
+  	//
+  	// Create duration JTextField
+  	//
+  	durationField = new JTextField();
+  	durationField.setEditable(false);	// non-editable
+  	durationField.setFont(new java.awt.Font("Calibri", 0, 12)); // set font style
+  	durationField.setForeground(105, 105, 105);	// set font color
+  	durationField.setOpaque(false);	// transparent
+  	durationField.setBackground(new Color(0,0,0,0));
+  	durationField.setBorder(new java.swing.BorderFactory.createEmptyBorder()); // set empty border
+  	durationField.setCursor(new Cursor(Cursor.TEXT_CURSOR));	// set coursor style
+  	durationField.setHorizontalAlignment(JTextField.CENTER);	// centered alignment
+  	durationField.setBounds(305, 140, 290, 20); // set absolute position and size
+  	getContentPane().add(durationField); // add to main frame
+  	
+  	//
   	// Set properties of main JFrame
   	//
   	frame.setUndecorated(true);	// frame is undecorated
@@ -96,10 +143,10 @@ public class AppGUI extends JFrame {
   private JLabel closeLabel; // close label
   private JTextField searchField; // search Field
   private JLabel searchLabel; // search icon
-  private JTextField artistTF; // track artist info field
-  private JTextArea nameTF; // track name info field
-  private JTextField durationTF; // track duration info field
-  private JLabel stopLabel; // stop botton
+  private JTextField artistField; // track artist info field
+  private JTextArea nameField; // track name info field
+  private JTextField durationField; // track duration info field
+  private JLabel stopLabel; // stop button
   private JLabel playLabel; // play button
   private JLabel nextLabel; // next button
   private JLabel imageLabel; // track image label
