@@ -7,16 +7,24 @@ public class AppGUI extends JFrame {
   
   private void initComponents() {
   	
-  	// Create close label and set
+  	// Create close label and set behavior
   	
   	// set properties of main JFrame
   	frame.setUndecorated(true);	// frame is undecorated
   	setLocationRelatieTo(null);	// center frame on screen
+  	
+	// The mouse listener and mouse motion listener to make frame dragable.
   	addMouseListener(new MouseAdapter() {
   		public void mousePressed(MouseEvent e) {
   			point.x = e.getX();
   			point.y = e.getY();
   		}
+	});
+	frame.addMouseMotionListener(new MouseMotionAdapter() {
+		public void mouseDragged(MouseEvent e) {
+			Point p = frame.getLocation();
+			frame.setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
+		}
 	});
   }
   
