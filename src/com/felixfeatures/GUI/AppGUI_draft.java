@@ -1,7 +1,26 @@
 
-public class AppGUI_draft extends JFrame {
+public class AppGUI extends JFrame {
   
-  private JLabel background; // background
+  public AppGUI() {
+  	initComponents();
+  }
+  
+  private void initComponents() {
+  	
+  	// Create close label and set
+  	
+  	// set properties of main JFrame
+  	frame.setUndecorated(true);	// frame is undecorated
+  	setLocationRelatieTo(null);	// center frame on screen
+  	addMouseListener(new MouseAdapter() {
+  		public void mousePressed(MouseEvent e) {
+  			point.x = e.getX();
+  			point.y = e.getY();
+  		}
+	});
+  }
+  
+  private JLabel closeLabel; // close label
   private JTextField searchField; // search Field
   private JLabel searchLabel; // search icon
   private JTextField artistTF; // track artist info field
@@ -11,5 +30,8 @@ public class AppGUI_draft extends JFrame {
   private JLabel playLabel; // play button
   private JLabel nextLabel; // next button
   private JLabel imageLabel; // track image label
+  private JLabel background; // background
+  
+  private static Point point = new Point(); // point to get position of frame when drag
   
 }
