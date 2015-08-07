@@ -113,6 +113,32 @@ public class AppGUI extends JFrame {
   	getContentPane().add(durationField); // add to main frame
   	
   	//
+  	// Create stop, play and next labels and set behavior
+  	//
+  	
+  	// Create labels
+  	stopLabel = new JLabel();
+  	playLabel = new JLabel();
+  	nextLabel = new JLabel();
+  	// Set lables cursors
+  	stopLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  	playLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  	nextLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  	// Create listener and use it to labels
+  	LabelListener listener = new LabelListener();
+  	stopLabel.addMouseListener(listener);
+  	playLabel.addMouseListener(listener);
+  	nextLabel.addMouseListener(listener);
+  	// Set absolute position and size
+  	stopLabel.setBounds(400, 180, 50, 50);
+  	playLabel.setBounds(450, 180, 50, 50);
+  	nextLabel.setBounds(500, 180, 50, 50);
+  	// Add labels to main frame
+  	getContentPane().add(stopLabel);
+  	getContentPane().add(playLabel);
+  	getContentPane().add(nextLabel);
+  	
+  	//
   	// Set properties of main JFrame
   	//
   	frame.setUndecorated(true);	// frame is undecorated
@@ -139,6 +165,7 @@ public class AppGUI extends JFrame {
   private void search() {
   	
   }
+  
   
   public static void main(String... args) {
   	// enable Nimbus Look and Feel
@@ -185,4 +212,19 @@ public class AppGUI extends JFrame {
   private static Point point = new Point(); // point to get position of frame when drag
   private static final String DEFAULT_SEARCH_TEXT = "enter tag or artist to search";
   
+}
+
+private class LabelListener implements MouseListener {
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// determine which button has fired the event
+		JLabel source = (JLabel) e.getSource();
+		if (source == stopLabel) {
+			stop();
+		} else if (source == playLabel) {
+			play();
+		} else {
+			next();
+		}
+	}
 }
