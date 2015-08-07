@@ -166,6 +166,17 @@ public class AppGUI extends JFrame {
   	
   }
   
+  private void play() {
+  	
+  }
+  
+  private void next() {
+  	
+  }
+  
+  private void stop() {
+  	
+  }
   
   public static void main(String... args) {
   	// enable Nimbus Look and Feel
