@@ -10,14 +10,14 @@ public class AppGUI extends JFrame {
   	// Create close label and set behavior
   	//
   	closeLabel = new JLabel();
-  	closeLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  	closeLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));	// set cursor
   	closeLabel.addMouseListener(new MouseAdapter() {
   		@Override
 		public void mouseReleased(MouseEvent e) {
 			System.exit(0);
 		}  		
   	});
-  	closelabel.setBounds(570, 30, 25, 25); // set position and size
+  	closelabel.setBounds(570, 30, 25, 25); // set absolute position and size
   	getContentPane().add(closelabel); // add to main frame
   	
   	//
@@ -48,8 +48,22 @@ public class AppGUI extends JFrame {
   			search();
   		}
   	});
-  	searchField.setBounds(50, 30, 100, 20); // set position and size
+  	searchField.setBounds(350, 30, 100, 20); // set absolute position and size
   	getContentPane().add(searchField);	// add to main frame
+  	
+  	//
+  	// Create search label and set behavior
+  	//
+  	searchLabel = new JLabel();
+  	searchLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));	// set cursor
+  	searchLabel.addMouseListener(new MouseAdapter() {
+  		@Override
+		public void mouseReleased(MouseEvent e) {
+			search();
+		}  		
+  	});
+  	searchLabel.setBounds(450, 30, 20, 20); // set absolute position and size
+  	getContentPane().add(searchLabel); // add to main frame
   	
   	//
   	// Set properties of main JFrame
@@ -73,7 +87,10 @@ public class AppGUI extends JFrame {
 	setSize(600, 300);	// set size of frame
 	setLocationRelatieTo(null);	// center frame on screen
 	setResizable(false);
-	
+  }
+  
+  private void search() {
+  	
   }
   
   private JLabel closeLabel; // close label
