@@ -6,13 +6,22 @@ public class AppGUI extends JFrame {
   }
   
   private void initComponents() {
-  	
+  	//
   	// Create close label and set behavior
+  	//
+  	closeLabel = new JLabel();
+  	closeLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+  	closeLabel.addMouseListener(new MouseAdapter() {
+		public void mouseReleased(MouseEvent e) {
+			System.exit(0);
+		}  		
+  	});
+  	getContentPane().add(closelabel);
   	
-  	// set properties of main JFrame
+  	//
+  	// Set properties of main JFrame
+  	//
   	frame.setUndecorated(true);	// frame is undecorated
-  	setLocationRelatieTo(null);	// center frame on screen
-  	
 	// The mouse listener and mouse motion listener to make frame dragable.
   	addMouseListener(new MouseAdapter() {
   		public void mousePressed(MouseEvent e) {
@@ -20,12 +29,16 @@ public class AppGUI extends JFrame {
   			point.y = e.getY();
   		}
 	});
-	frame.addMouseMotionListener(new MouseMotionAdapter() {
+	addMouseMotionListener(new MouseMotionAdapter() {
 		public void mouseDragged(MouseEvent e) {
 			Point p = frame.getLocation();
 			frame.setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
 		}
 	});
+	setSize(600, 300);	// set size of frame
+	setLocationRelatieTo(null);	// center frame on screen
+	setResizable(false);
+	
   }
   
   private JLabel closeLabel; // close label
