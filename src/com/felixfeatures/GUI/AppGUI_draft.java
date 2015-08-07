@@ -12,11 +12,12 @@ public class AppGUI extends JFrame {
   	closeLabel = new JLabel();
   	closeLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
   	closeLabel.addMouseListener(new MouseAdapter() {
+  		@Override
 		public void mouseReleased(MouseEvent e) {
 			System.exit(0);
 		}  		
   	});
-  	closelabel.setBounds(0, 0, 0, 0); // set position and size
+  	closelabel.setBounds(570, 30, 25, 25); // set position and size
   	getContentPane().add(closelabel); // add to main frame
   	
   	//
@@ -26,9 +27,12 @@ public class AppGUI extends JFrame {
   	searchField.setFont(new java.awt.Font("Calibri", 0, 12)); // set font
   	searchField.setForeground(153, 153, 153);	// set font color
   	searchField.setText(DEFAULT_SEARCH_TEXT);	// set default text
+  	searchField.setCursor(new Cursor(Cursor.TEXT_CURSOR));	// set cursor
   	searchField.setOpaque(false);	// transparent
   	searchField.setBorder(new java.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0)); // set empty border
+  	// focus
   	searchField.addFocusListener(new FocusAdapter() {
+  		@Override
   		public void focusGained(FocusEvent e) {
   			// remove default text and set black foreground color
   			if (searchField.getText().equals(DEFAULT_SEARCH_TEXT)) {
@@ -37,7 +41,14 @@ public class AppGUI extends JFrame {
   			}
   		}
   	});
-  	searchField.setBounds(0, 0, 0, 0); // set position and size
+  	// action
+  	searchField.addActionListener(new ActionListener() {
+  		@Override
+  		public void actionPerformed(ActionEvent e) {
+  			search();
+  		}
+  	});
+  	searchField.setBounds(50, 30, 100, 20); // set position and size
   	getContentPane().add(searchField);	// add to main frame
   	
   	//
@@ -46,12 +57,14 @@ public class AppGUI extends JFrame {
   	frame.setUndecorated(true);	// frame is undecorated
 	// The mouse listener and mouse motion listener to make frame dragable.
   	addMouseListener(new MouseAdapter() {
+  		@Override
   		public void mousePressed(MouseEvent e) {
   			point.x = e.getX();
   			point.y = e.getY();
   		}
 	});
 	addMouseMotionListener(new MouseMotionAdapter() {
+		@Override
 		public void mouseDragged(MouseEvent e) {
 			Point p = frame.getLocation();
 			frame.setLocation(p.x + e.getX() - point.x, p.y + e.getY() - point.y);
