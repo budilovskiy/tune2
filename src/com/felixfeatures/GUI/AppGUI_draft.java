@@ -58,9 +58,16 @@ public class AppGUI extends JFrame {
   	searchLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));	// set cursor
   	searchLabel.addMouseListener(new MouseAdapter() {
   		@Override
+		public void mousePressed(MouseEvent e) {
+			artistField.setText("Searching");
+			nameField.setText("please wait");
+			durationField.setText("...");
+		}
+  		
+  		@Override
 		public void mouseReleased(MouseEvent e) {
 			search();
-		}  		
+		}
   	});
   	searchLabel.setBounds(450, 30, 20, 20); // set absolute position and size
   	getContentPane().add(searchLabel); // add to main frame
