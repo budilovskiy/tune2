@@ -30,7 +30,7 @@ public class AppGUI extends JFrame {
   	searchField.setCursor(new Cursor(Cursor.TEXT_CURSOR));	// set cursor
   	searchField.setOpaque(false);	// transparent
   	searchField.setBorder(new java.swing.BorderFactory.createEmptyBorder()); // set empty border
-  	// focus
+  	/* focus */
   	searchField.addFocusListener(new FocusAdapter() {
   		@Override
   		public void focusGained(FocusEvent e) {
@@ -41,7 +41,7 @@ public class AppGUI extends JFrame {
   			}
   		}
   	});
-  	// action
+  	/* action */
   	searchField.addActionListener(new ActionListener() {
   		@Override
   		public void actionPerformed(ActionEvent e) {
@@ -137,6 +137,36 @@ public class AppGUI extends JFrame {
   }
   
   private void search() {
+  	
+  }
+  
+  public static void main(String... args) {
+  	// enable Nimbus Look and Feel
+  	try {
+  		// Check if Nimbus is supported and get its classname
+  		for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+  			if ("Nimbus".equals(info.getName())) {
+  				javax.swing.UIManager.setLookAndFeel(info.getClassName());
+  				break;
+  			}
+  		}	
+  	} catch (Exception e) {
+  		try {
+			// If Nimbus is not available, set to the default Java (metal) look and feel
+			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+  	}
+  	
+  	final AppGUI frame = new AppGUI();
+  	/* Create and display the form */
+  	java.awt.EventQueue.invokeLater(new Runnable() {
+		@Override
+		public void run() {
+			frame.setVisible(true);
+		}
+  	});
   	
   }
   
