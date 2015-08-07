@@ -16,7 +16,26 @@ public class AppGUI extends JFrame {
 			System.exit(0);
 		}  		
   	});
-  	getContentPane().add(closelabel);
+  	closelabelsetBounds(0, 0, 0, 0); // set position and size
+  	getContentPane().add(closelabel); // add to main frame
+  	
+  	//
+  	// Create search TextField and set behavior
+  	//
+  	searchField = new JTextField();
+  	searchField.setFont(new java.awt.Font("Calibri", 0, 12)); // set font
+  	searchField.setForeground(153, 153, 153);	// set font color
+  	searchField.setText(DEFAULT_SEARCH_TEXT);	// set default text
+  	searchField.setOpaque(false);	// transparent
+  	searchField.setBorder(new java.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0)); // set empty border
+  	searchField.addFocusListener(new FocusAdapter() {
+  		public void focusGained(FocusEvent e) {
+  			if (searchField.getText().equals(DEFAULT_SEARCH_TEXT)) {
+  				searchField.setForeground(0, 0, 0);
+  				searchField.setText("");
+  			}
+  		}
+  	});
   	
   	//
   	// Set properties of main JFrame
@@ -54,5 +73,6 @@ public class AppGUI extends JFrame {
   private JLabel background; // background
   
   private static Point point = new Point(); // point to get position of frame when drag
+  private static final String DEFAULT_SEARCH_TEXT = "enter tag or artist to search";
   
 }
