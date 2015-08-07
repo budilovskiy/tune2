@@ -160,6 +160,7 @@ public class AppGUI extends JFrame {
 	setSize(600, 300);	// set size of frame
 	setLocationRelatieTo(null);	// center frame on screen
 	setResizable(false);
+	getContentPane().setlayout(null);
   }
   
   private void search() {
