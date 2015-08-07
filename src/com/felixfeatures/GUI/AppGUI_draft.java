@@ -16,7 +16,7 @@ public class AppGUI extends JFrame {
 			System.exit(0);
 		}  		
   	});
-  	closelabelsetBounds(0, 0, 0, 0); // set position and size
+  	closelabel.setBounds(0, 0, 0, 0); // set position and size
   	getContentPane().add(closelabel); // add to main frame
   	
   	//
@@ -30,12 +30,15 @@ public class AppGUI extends JFrame {
   	searchField.setBorder(new java.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0)); // set empty border
   	searchField.addFocusListener(new FocusAdapter() {
   		public void focusGained(FocusEvent e) {
+  			// remove default text and set black foreground color
   			if (searchField.getText().equals(DEFAULT_SEARCH_TEXT)) {
   				searchField.setForeground(0, 0, 0);
   				searchField.setText("");
   			}
   		}
   	});
+  	searchField.setBounds(0, 0, 0, 0); // set position and size
+  	getContentPane().add(searchField);	// add to main frame
   	
   	//
   	// Set properties of main JFrame
