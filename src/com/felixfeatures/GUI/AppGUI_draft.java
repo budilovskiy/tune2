@@ -36,7 +36,7 @@ public class AppGUI extends JFrame {
 				System.exit(0);
 			}
 		});
-		closeLabel.setBounds(570, 30, 25, 25); // set absolute position and size
+		closeLabel.setBounds(577, 7, 15, 15); // set absolute position and size
 		getContentPane().add(closeLabel); // add to main frame
 
 		//
@@ -67,7 +67,7 @@ public class AppGUI extends JFrame {
 				search();
 			}
 		});
-		searchField.setBounds(350, 30, 100, 20); // set absolute position and size
+		searchField.setBounds(374, 30, 178, 22); // set absolute position and size
 		getContentPane().add(searchField); // add to main frame
 
 		//
@@ -88,7 +88,7 @@ public class AppGUI extends JFrame {
 				search();
 			}
 		});
-		searchLabel.setBounds(450, 30, 20, 20); // set absolute position and size
+		searchLabel.setBounds(557, 31, 20, 20); // set absolute position and size
 		getContentPane().add(searchLabel); // add to main frame
 
 		//
@@ -96,15 +96,14 @@ public class AppGUI extends JFrame {
 		//
 		artistField = new JTextField();
 		artistField.setEditable(false); // non-editable
-		artistField
-				.setFont(new java.awt.Font("Calibri", java.awt.Font.BOLD, 14)); // set font style
+		artistField.setFont(new java.awt.Font("Calibri", java.awt.Font.BOLD, 14)); // set font style
 		artistField.setForeground(new Color(105, 105, 105)); // set font color
 		artistField.setOpaque(false); // transparent
 		artistField.setBackground(new Color(0, 0, 0, 0));
 		artistField.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // set empty border
 		artistField.setCursor(new Cursor(Cursor.TEXT_CURSOR)); // set cursor style
 		artistField.setHorizontalAlignment(JTextField.CENTER); // centered alignment
-		artistField.setBounds(305, 80, 290, 20); // set absolute position and size
+		artistField.setBounds(305, 90, 290, 20); // set absolute position and size
 		getContentPane().add(artistField); // add to main frame
 
 		//
@@ -120,7 +119,7 @@ public class AppGUI extends JFrame {
 		nameField.setBackground(new Color(0, 0, 0, 0));
 		nameField.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // set empty border
 		nameField.setCursor(new Cursor(Cursor.TEXT_CURSOR)); // set cursor style
-		nameField.setBounds(305, 100, 290, 40); // set absolute position and size
+		nameField.setBounds(305, 110, 290, 40); // set absolute position and size
 		getContentPane().add(nameField); // add to main frame
 
 		//
@@ -135,7 +134,7 @@ public class AppGUI extends JFrame {
 		durationField.setBorder(javax.swing.BorderFactory.createEmptyBorder()); // set empty border
 		durationField.setCursor(new Cursor(Cursor.TEXT_CURSOR)); // set cursor style
 		durationField.setHorizontalAlignment(JTextField.CENTER); // centered alignment
-		durationField.setBounds(305, 140, 290, 20); // set absolute position and size
+		durationField.setBounds(305, 150, 290, 20); // set absolute position and size
 		getContentPane().add(durationField); // add to main frame
 
 		//
@@ -156,13 +155,21 @@ public class AppGUI extends JFrame {
 		playLabel.addMouseListener(listener);
 		nextLabel.addMouseListener(listener);
 		// Set absolute position and size
-		stopLabel.setBounds(400, 180, 50, 50);
-		playLabel.setBounds(450, 180, 50, 50);
-		nextLabel.setBounds(500, 180, 50, 50);
+		stopLabel.setBounds(377, 193, 30, 30);
+		playLabel.setBounds(432, 187, 40, 40);
+		nextLabel.setBounds(492, 193, 30, 30);
 		// Add labels to main frame
 		getContentPane().add(stopLabel);
 		getContentPane().add(playLabel);
 		getContentPane().add(nextLabel);
+		
+		//
+		// Create background label
+		//
+		background = new JLabel();
+		background.setBounds(0, 0, 600, 300);
+		background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/newUI.png")));
+		getContentPane().add(background);
 
 		//
 		// Set properties of main JFrame
@@ -190,19 +197,25 @@ public class AppGUI extends JFrame {
 	}
 
 	private void search() {
-
+		System.out.println("Search");
 	}
 
 	private void play() {
-
+		System.out.println("Play");
 	}
 
 	private void next() {
-
+		System.out.println("Next");
 	}
 
 	private void stop() {
-
+		System.out.println("Stop");
+	}
+	
+	private void displayError(String error) {
+		artistField.setText("Oops!");
+		nameField.setText(error);
+		durationField.setText("");
 	}
 
 	public static void main(String... args) {
