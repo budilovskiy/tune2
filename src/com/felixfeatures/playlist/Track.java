@@ -44,7 +44,7 @@ public class Track {
 		this.name = name;
 	}
 
-	public double getDuration() {
+	public int getDuration() {
 		return duration;
 	}
 
