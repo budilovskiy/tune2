@@ -6,3 +6,4 @@ Fully redesigned architecture and UI
 - using response from last.fm and vk.com APIs in JSON format instead XML to improve speed while parsing
 - added image and duration of track
 - searching URL of track at vk.com according to its duration (received from last.fm API) to exclude remixes and false tracks
+- added volume control
