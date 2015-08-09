@@ -1,5 +1,7 @@
-# tune2
+# tune2 (tune! v. 2)
 Project is at development stage now.
+
+tune! is simple music player, which allows you to search and listen best tracks by tag or artist, according to last.fm charts
 
 Fully redesigned architecture and UI
 - using array with specified initial capacity to hold tracks in playlist to improve speed while creating and modifying playlist
@@ -10,5 +12,5 @@ Fully redesigned architecture and UI
 
 Application uses third-party libraries and code:
 - json-simple from Google https://code.google.com/p/json-simple/
-- JLayer 1.0.1 MP3 decoder/player/converter from Javazoom
+- JLayer 1.0.1 MP3 decoder/player/converter from Javazoom http://www.javazoom.net/javalayer/javalayer.html
 - volume control utility founded on https://community.oracle.com/thread/1272842
