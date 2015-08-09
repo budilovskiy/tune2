@@ -6,8 +6,8 @@ tune! is simple music player, which allows you to search and listen best tracks 
 Fully redesigned architecture and UI
 - using array with specified initial capacity to hold tracks in playlist to improve speed while creating and modifying playlist
 - using response from last.fm and vk.com APIs in JSON format instead XML to improve speed while parsing
-- added image and duration of track
-- searching URL of track at vk.com according to its duration (received from last.fm API) to exclude remixes and false tracks
+- added images and duration of tracks
+- searching URL of tracks at vk.com according to its duration (received from last.fm API) to exclude remixes and false tracks
 - added volume control
 
 Application uses third-party libraries and code:
