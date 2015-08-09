@@ -9,37 +9,37 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
+import javazoom.jl.player.advanced.AdvancedPlayer;
 
 import com.felixfeatures.playlist.TopTracks;
 import com.felixfeatures.playlist.Track;
 
+/**
+ * Manage playback with javazoom.jl.player.Player;
+ */
 public class SoundJLayer {
-	
-	private static List<PlayListener> listeners = new ArrayList<>();
+
+    private static List<PlayListener> listeners = new ArrayList<>();
     private TopTracks playlist;
     private Track currentTrack;
-    private URL url;
-    
+
     private static HttpURLConnection connection;
     private static String stringTrackURL;
     private static InputStream is;
     private static BufferedInputStream bis;
     private static Thread audioThread;
-    private static Player player;
+    private static AdvancedPlayer player;
     private static boolean playing = true;
 
     /**
      * Constructor of SoundJLayer with new playlist
      *
-     * @param topTracks
+     * @param playlist
      */
     public SoundJLayer(TopTracks playlist) {
-    	this.playlist = playlist;
+        this.playlist = playlist;
     }
 
     /**
@@ -52,6 +52,8 @@ public class SoundJLayer {
     }
 
     /**
+     * Return current playing track
+     *
      * @return current playing Track
      */
     public Track getCurrentTack() {
@@ -80,63 +82,66 @@ public class SoundJLayer {
     }
 
     /**
-     * Plays random track of playlist
-     *
-     * @param playlist - collection of Tracks to play
+     * Play current playlist
      */
     public void play() {
-    	System.out.println(playlist);
         stop();
-		try {
-			currentTrack = playlist.getRandomTrack();
-			stringTrackURL = currentTrack.getURL();
-		} catch (IOException | NullPointerException e) {
-			e.printStackTrace();
-			// Wait 1 second
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException ex) {
-				ex.printStackTrace();
-			}
-		}
-		playTrack(stringTrackURL);
+        try {
+            currentTrack = playlist.getRandomTrack(); // Get random track
+            stringTrackURL = currentTrack.getURL();
+            System.out.println(currentTrack.fullInfoToString());
+        } catch (IOException | NullPointerException e) {
+            e.printStackTrace();
+            // Wait 0.3 second
+            // vk.com limits 3 requests in second
+            try {
+                Thread.sleep(350);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+        playTrack(stringTrackURL);
     }
 
     /**
-     * Plays single track from playlist
+     * Play single track from playlist
      *
-     * @param trackURL - URL of Track
+     * @param trackURL - String URL of Track
      */
     private void playTrack(final String trackURL) {
+        // Open connection and create BufferedInputStream with audio data
         if (trackURL != null) {
             try {
-                url = new URL(trackURL);
-                connection = (HttpURLConnection) url.openConnection();
+                connection = (HttpURLConnection) new URL(trackURL).openConnection();
                 is = connection.getInputStream();
                 bis = new BufferedInputStream(is);
             } catch (MalformedURLException | ConnectException ex) {
-                Logger.getLogger(SoundJLayer.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             } catch (IOException ex) {
-                Logger.getLogger(SoundJLayer.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
 
+        // Run playing in separate thread 
         audioThread = new Thread("audioThread") {
             @Override
             public void run() {
                 try {
                     playing = true;
                     if (trackURL != null) {
+                        // Notify listeners
                         for (PlayListener listener : listeners) {
                             listener.PlayerStarts();
                         }
-                        player = new Player(bis);
+                        // create player and start playback
+                        player = new AdvancedPlayer(bis);
                         player.play();
                     }
                 } catch (JavaLayerException ex) {
-                    // skip track if JavaLayerException
-                    Logger.getLogger(SoundJLayer.class.getName()).log(Level.SEVERE, null, ex);
+                    // Skip track
+                    ex.printStackTrace();
                 }
+                // Play next track from playlist
                 if (playing) {
                     play();
                 }
