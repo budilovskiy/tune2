@@ -48,7 +48,7 @@ public class TrackURLFinder {
 		// Return request URL
 		return new URL(sb.toString());
 	}
-
+	
 	/**
 	 * Perform a request to vk.com, receive response in JSON format and parse it
 	 * to get URL of the first track in JSON document.
@@ -68,10 +68,11 @@ public class TrackURLFinder {
 		JSONObject mp3 = (JSONObject) mp3list.get(1); // first track from VK response
 		return new String(mp3.get("url").toString());
 	}
-
+	
 	/**
 	 * Perform a request to vk.com, receive response in JSON format and parse it
 	 * to get URL of the first track with given duration.
+	 * If track duration was set to 0, method get first track from vk.com API.
 	 * Have default access modifier to access it only within package
 	 * 
 	 * @param fullTrackName
@@ -87,8 +88,6 @@ public class TrackURLFinder {
 
 		URL requestURL = getVKRequestURL(fullTrackName);
 		
-		/* 
-		// Moved to SoundJLayer class in player package
 		// Wait 1/3 second, because vk.com API has a limit of 3 requests in second
 		try {
 			Thread.sleep(350);
@@ -96,7 +95,6 @@ public class TrackURLFinder {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
 		
 		JSONArray mp3list = (JSONArray) JSONUtil.parse(requestURL);
 
@@ -104,8 +102,62 @@ public class TrackURLFinder {
 		for (int i = 1; i < mp3list.size(); i++) {
 			JSONObject mp3 = (JSONObject) mp3list.get(i);
 			int vkDuration = Integer.parseInt(mp3.get("duration").toString());
-			if ((duration >= vkDuration - 1) && (duration <= vkDuration + 1)) { // (+- 1 second)
+			if (duration != 0) {
+				if ((duration >= vkDuration - 1) && (duration <= vkDuration + 1)) { // (+- 1 second)
+					result = mp3.get("url").toString();
+					break;
+				}
+			} else {
 				result = mp3.get("url").toString();
+				break;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * Perform a request to vk.com, receive response in JSON format and parse it
+	 * to get URL of the first track with given duration.
+	 * If track duration was set to 0, method get first track from vk.com API and
+	 * set it's duration from this response.
+	 * Have default access modifier to access it only within package
+	 * 
+	 * @param track
+	 *            - the Track instance
+	 * @param duration
+	 *            - duration of track
+	 * @return URL(in String) of the location of the given track with given duration
+	 * @throws IOException
+	 *             from JSONUtil.parse()
+	 */
+	static String getURLfromVK(Track track)
+			throws IOException {
+
+		URL requestURL = getVKRequestURL(track.toString());
+		
+		// Wait 1/3 second, because vk.com API has a limit of 3 requests in second
+		try {
+			Thread.sleep(350);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		JSONArray mp3list = (JSONArray) JSONUtil.parse(requestURL);
+
+		String result = null;
+		for (int i = 1; i < mp3list.size(); i++) {
+			JSONObject mp3 = (JSONObject) mp3list.get(i);
+			int lastFmDuration = track.getDuration();
+			int vkDuration = Integer.parseInt(mp3.get("duration").toString());
+			if (lastFmDuration != 0) {
+				if ((lastFmDuration >= vkDuration - 1) && (lastFmDuration <= vkDuration + 1)) { // (+- 1 second)
+					result = mp3.get("url").toString();
+					break;
+				}
+			} else {
+				result = mp3.get("url").toString();
+				track.setDuration(vkDuration);
 				break;
 			}
 		}
