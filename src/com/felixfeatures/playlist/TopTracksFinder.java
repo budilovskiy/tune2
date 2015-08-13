@@ -9,6 +9,7 @@ import java.net.URLEncoder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.felixfeatures.gui.AppGUI;
 import com.felixfeatures.util.JSONUtil;
 
 /**
@@ -20,7 +21,7 @@ import com.felixfeatures.util.JSONUtil;
 public class TopTracksFinder {
 
 	// Constant variable for the size of last.fm charts. Must be greater than 1;
-	private static final int LAST_FM_LIMIT_OF_TRACKS = 100;
+	public static final int LAST_FM_LIMIT_OF_TRACKS = 200;
 	private static final String LAST_FM_API_KEY = "ce021b6cb5cb325de823959093b8854b";
 
 	/**
@@ -35,25 +36,18 @@ public class TopTracksFinder {
 	 * @throws MalformedURLException
 	 * @throws UnsupportedEncodingException
 	 */
-	private static URL getLastFmRequestURL(String searchString,
-			String searchMethod) throws IllegalArgumentException,
-			MalformedURLException, UnsupportedEncodingException {
+	private static URL getLastFmRequestURL(String searchString, String searchMethod)
+					throws IllegalArgumentException, MalformedURLException, UnsupportedEncodingException {
 
-		if (searchString.equals("") || searchString == null) {
-			throw new IllegalArgumentException("Search query is empty or null");
+		if (searchString.equals("") || searchString.equals(AppGUI.DEFAULT_SEARCH_TEXT)) {
+			throw new IllegalArgumentException("looks like it is nothing to search");
 		}
 
 		int averageRequestLength = 400; // Maximum average request length
 
 		searchString = URLEncoder.encode(searchString, "UTF-8");
-		StringBuilder sb = new StringBuilder(averageRequestLength); // initial
-																	// capacity
-																	// of
-																	// StringBuilder
-																	// specified
-																	// by the
-																	// capacity
-																	// argument
+		StringBuilder sb = new StringBuilder(averageRequestLength); // initial capacity of StringBuilder
+																	// specified by the capacity argument
 		sb.append("http://ws.audioscrobbler.com/2.0/");
 		sb.append("?method=");
 		sb.append(searchMethod + ".gettoptracks");
@@ -65,6 +59,7 @@ public class TopTracksFinder {
 		case "artist":
 			sb.append("&artist=");
 			sb.append(searchString);
+			sb.append("&autocorrect=1");
 			break;
 		default:
 			throw new IllegalArgumentException(
@@ -97,28 +92,34 @@ public class TopTracksFinder {
 		JSONArray tracklist = null;
 		tracklist = (JSONArray) JSONUtil.parse(requestURL);
 
-		for (int i = 0; i < tracklist.size(); i++) {
-			JSONObject track = (JSONObject) tracklist.get(i);
-			JSONObject artist = (JSONObject) track.get("artist");
-			JSONObject image = null;
-			if (track.get("image") != null) {
-				JSONArray images = (JSONArray) track.get("image");
-				for (int j = 0; j < images.size(); j++) {
-					image = (JSONObject) images.get(j);
-					if (image.get("size").equals("extralarge")) {
-						break;
-					}
-				}
-			}
-			String artistName = artist.get("name").toString();
-			String trackName = track.get("name").toString();
-			String trackduration = (track.get("duration").toString().equals("")) ? "0"
-					: track.get("duration").toString();
-			String imageURL = (image == null) ? null : image.get("#text")
+            for (Object tracklist1 : tracklist) {
+                JSONObject track = (JSONObject) tracklist1;
+                JSONObject artist = (JSONObject) track.get("artist");
+                JSONObject image = null;
+                if (track.get("image") != null) {
+                    JSONArray images = (JSONArray) track.get("image");
+                    for (int j = 0; j < images.size(); j++) {
+                        image = (JSONObject) images.get(j);
+                        if (image.get("size").equals("extralarge")) {
+                            break;
+                        }
+                    }
+                }
+                String artistName = artist.get("name").toString();
+                String trackName = track.get("name").toString();
+                String trackduration;
+                // If duration is not found, it sets to 0
+                try {
+                	trackduration = (track.get("duration").toString().equals("")) ? "0"
+                			: track.get("duration").toString();
+                } catch (NullPointerException e) {
+                	trackduration = "0";
+                }
+                String imageURL = (image == null) ? null : image.get("#text")
 					.toString();
-			topTracks.add(new Track(artistName, trackName, trackduration,
+                topTracks.add(new Track(artistName, trackName, trackduration,
 					imageURL));
-		}
+            }
 		return topTracks;
 
 	}
