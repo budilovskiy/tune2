@@ -84,15 +84,17 @@ public class Track {
 		}
 		return URL;
 	}
-
-	@Override
-	public String toString() {
-		return artist + " - " + name;
-	}
-
+	
+	
 	public String fullInfoToString() {
 		return artist + " - " + name + " : " + duration + " seconds"
 				+ "\nURL: " + URL + "\nimage: " + imageURL;
+	}
+	
+	// Override methods from Object
+	@Override
+	public String toString() {
+		return artist + " - " + name;
 	}
 
 	@Override
