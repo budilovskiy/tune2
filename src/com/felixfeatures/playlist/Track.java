@@ -85,7 +85,7 @@ public class Track {
 		return URL;
 	}
 	
-	
+	// Get full String information of track
 	public String fullInfoToString() {
 		return artist + " - " + name + " : " + duration + " seconds"
 				+ "\nURL: " + URL + "\nimage: " + imageURL;
