@@ -37,6 +37,20 @@ public class AppGUI extends JFrame implements PlayListener {
         });
         closeLabel.setBounds(580, 5, 15, 15); // set absolute position and size
         getContentPane().add(closeLabel); // add to main frame
+        
+        //
+        // Create minimize label and set behavior
+        //
+        minimizeLabel = new JLabel();
+        minimizeLabel.setCursor(new Cursor(Cursor.HAND_CURSOR)); // set cursor
+        minimizeLabel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            	setState(JFrame.ICONIFIED);
+            }
+        });
+        minimizeLabel.setBounds(565, 5, 15, 15); // set absolute position and size
+        getContentPane().add(minimizeLabel); // add to main frame
 
         //
         // Create search JTextField and set behavior
@@ -273,6 +287,7 @@ public class AppGUI extends JFrame implements PlayListener {
             }
         });
         setIconImage(new ImageIcon(getClass().getResource("/windowIcon.png")).getImage());
+        getContentPane().setBackground(new Color(0, 0, 0, 0));
         setSize(600, 300); // set size of frame
         setTitle("tune!");
         setLocationRelativeTo(null); // center frame on screen
@@ -289,25 +304,25 @@ public class AppGUI extends JFrame implements PlayListener {
      */
     private void search(String query, String method) {
         try {
+        	// Create new playlist (may throw Exceptions)
             playlist = TopTracksFinder.getTopTracksFromLastFm(query, method);
+            System.out.println(playlist);
+            // Create new JLayer instance
+            player = new SoundJLayer(playlist);
+            // Stop current playback
+            stop();
+            // Clear info and display "complete" message
+            artistField.setText("");
+            nameField.setText("Searching complete");
+            durationField.setText("");
+            imageLabel.setIcon(new ImageIcon()); // empty label
         } catch (IOException | IllegalStateException | IllegalArgumentException e) {
             e.printStackTrace();
             displayError(e.getMessage());
         } catch (NullPointerException e) {
             e.printStackTrace();
-            displayError("there is no such tag or artist");
+            displayError("probably there is no such tag or artist");
         }
-        // Stop current player
-        if (player != null) {
-            stop();
-        }
-        // Create new JLayer instance
-        player = new SoundJLayer(playlist);
-        // Clear info
-        artistField.setText("");
-        nameField.setText("Searching complete");
-        durationField.setText("");
-        imageLabel.setIcon(new ImageIcon()); // empty label
     }
 
     /**
@@ -448,6 +463,7 @@ public class AppGUI extends JFrame implements PlayListener {
     }
 
     private JLabel closeLabel; // close label
+    private JLabel minimizeLabel; // minimize label
     private JTextField searchField; // search Field
     private JLabel searchLabel; // search icon
     private JTextField artistField; // track artist info field
