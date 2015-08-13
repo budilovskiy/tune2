@@ -1,120 +1,143 @@
 package com.felixfeatures.playlist;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-
-import com.felixfeatures.util.JSONUtil;
 
 /**
- * Provides static methods to perform search of the URL of tracks location at
- * vk.com using API.
- * See VK API documentation https://vk.com/pages?oid=-1&p=audio.search
+ * Class provides simple bean of Track representation
  */
-public class TrackURLFinder {
-
-	// Constant variable that holds search method value
-	private final static String VK_API_METHOD = "audio.search";
-	private final static String VK_API_TOKEN = "827aa5b99cf0efd1965b7deb751276c5010ad2ca301307e2f49ac5c404f0a3cdf6d9bd4dfc0fa30011a13";
+public class Track {
+	private String artist; // track artist
+	private String name; // track name
+	private int duration; // track duration in seconds
+	private String imageURL; // URL of track image location
+	private String URL; // URL of track location
 
 	/**
-	 * Builds and returns URL searching request of the given track to vk.com
-	 * API.
+	 * Constructor have default access modifier to access it only within package
 	 * 
-	 * @param searchQuery
-	 *            - full name of the track in "Artist - Name" String format
-	 * @return searching URL request to vk.com
-	 * @throws UnsupportedEncodingException
-	 * @throws IOException
-	 *             from JSONUtil.parse()
+	 * @param artist - String artist name
+	 * @param name  - String track name
+	 * @param duration - String track duration
+	 * @param imageURL - String URL of track image
 	 */
-	private static URL getVKRequestURL(String searchQuery)
-			throws UnsupportedEncodingException, MalformedURLException {
-		int averageRequestLength = 400;
-		// Building request URL to vk.com API service
-		StringBuilder sb = new StringBuilder(averageRequestLength); //
-		sb.append("https://api.vk.com/method/");
-		sb.append(VK_API_METHOD);
-		sb.append("?q=");
-		// converting search query to UTF-8
-		sb.append(URLEncoder.encode(searchQuery, "UTF-8"));
-		sb.append("&access_token=");
-		sb.append(VK_API_TOKEN);
-		// Return request URL
-		return new URL(sb.toString());
+	Track(String artist, String name, String duration, String imageURL) {
+		this.artist = artist;
+		this.name = name;
+		this.duration = Integer.parseInt(duration);
+		this.imageURL = imageURL;
+	}
+
+	// Getters and setters
+	public String getArtist() {
+		return artist;
+	}
+
+	public void setArtist(String artist) {
+		this.artist = artist;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public void setArtistAndName(String artist, String name) {
+		this.artist = artist;
+		this.name = name;
+	}
+
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 
 	/**
-	 * Perform a request to vk.com, receive response in JSON format and parse it
-	 * to get URL of the first track in JSON document.
-	 * Have default access modifier to access it only within package
+	 * Automatically set URL of Track instance using the static method of
+	 * TrackURLFinder.getURLfromVK(String fullTrackName, double duration)
+	 * and returns this value.
 	 * 
-	 * @param fullTrackName
-	 *            - String representation of track: "Artist - Name"
-	 * @return URL(in String) of the location of the given track
+	 * @return URL of Track instance
 	 * @throws IOException
+	 *             if it is not possible to get track URL
 	 */
-	static String getURLfromVK(String fullTrackName) throws IOException {
-
-		URL requestURL = getVKRequestURL(fullTrackName);
-		
-		// Wait 1/3 second, because vk.com API has a limit of 3 requests in second
-		try {
-			Thread.sleep(350);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public String getURL() throws IOException {
+		if (URL == null) {
+			this.URL = TrackURLFinder.getURLfromVK(this);
 		}
-		
-		JSONArray mp3list = (JSONArray) JSONUtil.parse(requestURL);
-
-		JSONObject mp3 = (JSONObject) mp3list.get(1); // first track from VK response
-		return new String(mp3.get("url").toString());
+		return URL;
 	}
 
-	/**
-	 * Perform a request to vk.com, receive response in JSON format and parse it
-	 * to get URL of the first track with given duration.
-	 * Have default access modifier to access it only within package
-	 * 
-	 * @param fullTrackName
-	 *            - String representation of track: "Artist - Name"
-	 * @param duration
-	 *            - duration of track
-	 * @return URL(in String) of the location of the given track with given duration
-	 * @throws IOException
-	 *             from JSONUtil.parse()
-	 */
-	static String getURLfromVK(String fullTrackName, int duration)
-			throws IOException {
+	public void setURL(String URL) {
+		this.URL = URL;
+	}
 
-		URL requestURL = getVKRequestURL(fullTrackName);
-		
-		// Wait 1/3 second, because vk.com API has a limit of 3 requests in second
-		try {
-			Thread.sleep(350);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		JSONArray mp3list = (JSONArray) JSONUtil.parse(requestURL);
+	@Override
+	public String toString() {
+		return artist + " - " + name;
+	}
 
-		String result = null;
-		for (int i = 1; i < mp3list.size(); i++) {
-			JSONObject mp3 = (JSONObject) mp3list.get(i);
-			int vkDuration = Integer.parseInt(mp3.get("duration").toString());
-			if ((duration >= vkDuration - 1) && (duration <= vkDuration + 1)) { // (+- 1 second)
-				result = mp3.get("url").toString();
-				break;
-			}
-		}
+	public String fullInfoToString() {
+		return artist + " - " + name + " : " + duration + " seconds"
+				+ "\nURL: " + URL + "\nimage: " + imageURL;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((artist == null) ? 0 : artist.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(duration);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Track)) {
+			return false;
+		}
+		Track other = (Track) obj;
+		if (artist == null) {
+			if (other.artist != null) {
+				return false;
+			}
+		} else if (!artist.equals(other.artist)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(duration) != Double
+				.doubleToLongBits(other.duration)) {
+			return false;
+		}
+		return true;
 	}
 
 }
