@@ -20,7 +20,7 @@ public class TrackURLFinder {
 
 	// Constant variable that holds search method value
 	private final static String VK_API_METHOD = "audio.search";
-	private final static String VK_API_TOKEN = "827aa5b99cf0efd1965b7deb751276c5010ad2ca301307e2f49ac5c404f0a3cdf6d9bd4dfc0fa30011a13";
+	private final static String VK_API_TOKEN = "8...3";
 
 	/**
 	 * Builds and returns URL searching request of the given track to vk.com
@@ -87,14 +87,6 @@ public class TrackURLFinder {
 			throws IOException {
 
 		URL requestURL = getVKRequestURL(fullTrackName);
-		
-		// Wait 1/3 second, because vk.com API has a limit of 3 requests in second
-		try {
-			Thread.sleep(350);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		JSONArray mp3list = (JSONArray) JSONUtil.parse(requestURL);
 
