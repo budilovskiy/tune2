@@ -90,15 +90,8 @@ public class SoundJLayer {
             currentTrack = playlist.getRandomTrack(); // Get random track
             stringTrackURL = currentTrack.getURL();
             System.out.println(currentTrack.fullInfoToString());
-        } catch (IOException | NullPointerException e) {
+        } catch (IOException | NullPointerException e) {	// Can not get track URL or playlist is null
             e.printStackTrace();
-            // Wait 0.3 second
-            // vk.com limits 3 requests in second
-            try {
-                Thread.sleep(350);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
         }
         playTrack(stringTrackURL);
     }
@@ -120,6 +113,19 @@ public class SoundJLayer {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        } else {
+        	// Wait ~0.3 second because
+            // vk.com API limits 3 requests in second
+            try {
+            	System.out.println("Waiting 350 ms...");
+                Thread.sleep(350);
+                play(); // Play next track
+                return; // Exit from method
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+                play(); // Play next track without waiting
+                return; // Exit from method
+            }
         }
 
         // Run playing in separate thread 
@@ -127,7 +133,7 @@ public class SoundJLayer {
             @Override
             public void run() {
                 try {
-                    playing = true;
+                	playing = true;
                     if (trackURL != null) {
                         // Notify listeners
                         for (PlayListener listener : listeners) {
