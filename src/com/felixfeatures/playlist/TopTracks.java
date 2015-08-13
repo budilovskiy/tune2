@@ -11,7 +11,7 @@ import java.util.Random;
 public class TopTracks {
 
 	// class constant for default size
-	private static final int DEFAULT_CAPACITY = 100;
+	private static final int DEFAULT_CAPACITY = TopTracksFinder.LAST_FM_LIMIT_OF_TRACKS;
 
 	// instance variables
 	// tracks store the elements of the list and
