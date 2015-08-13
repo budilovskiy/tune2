@@ -64,6 +64,10 @@ public class Track {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
+	
+	public void setURL(String URL) {
+		this.URL = URL;
+	}
 
 	/**
 	 * Automatically set URL of Track instance using the static method of
@@ -79,10 +83,6 @@ public class Track {
 			this.URL = TrackURLFinder.getURLfromVK(this);
 		}
 		return URL;
-	}
-
-	public void setURL(String URL) {
-		this.URL = URL;
 	}
 
 	@Override
