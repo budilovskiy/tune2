@@ -114,7 +114,7 @@ public class SoundJLayer {
         	if (!playlist.isEmpty()) {
         		play(); // Try to get URL of next track
         	} else {
-        		LOGGER.log(Level.SEVERE, "Playlist is empty {0}", playlist);
+        		LOGGER.log(Level.WARNING, "Playlist is empty {0}", playlist);
         	}
         }
     }
