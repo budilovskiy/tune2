@@ -16,4 +16,4 @@ Application uses third-party libraries and code:
 - volume control utility founded on https://community.oracle.com/thread/1272842
 
 
-<center>![screenshot](https://cloud.githubusercontent.com/assets/11961551/10827638/c03fc1b0-7e78-11e5-9b2e-a069188ac79c.png)</center>
+<div align="center">![screenshot](https://cloud.githubusercontent.com/assets/11961551/10827638/c03fc1b0-7e78-11e5-9b2e-a069188ac79c.png)</div>
