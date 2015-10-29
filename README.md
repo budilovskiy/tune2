@@ -14,3 +14,5 @@ Application uses third-party libraries and code:
 - json-simple from Google https://code.google.com/p/json-simple/
 - JLayer 1.0.1 MP3 decoder/player/converter from Javazoom http://www.javazoom.net/javalayer/javalayer.html
 - volume control utility founded on https://community.oracle.com/thread/1272842
+
+![screenshot](https://cloud.githubusercontent.com/assets/11961551/10827638/c03fc1b0-7e78-11e5-9b2e-a069188ac79c.png)
