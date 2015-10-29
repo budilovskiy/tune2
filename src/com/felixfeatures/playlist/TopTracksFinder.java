@@ -21,8 +21,8 @@ import com.felixfeatures.util.JSONUtil;
 public class TopTracksFinder {
 
 	// Constant variable for the size of last.fm charts. Must be greater than 1;
-	public static final int LAST_FM_LIMIT_OF_TRACKS = 200;
-	private static final String LAST_FM_API_KEY = "c...b";
+	private static int lastFmLimitOfTracks = 160;
+	private static final String LAST_FM_API_KEY = "ce021b6cb5cb325de823959093b8854b";
 
 	/**
 	 * Build request URL to last.fm See last.fm API documentation
@@ -59,17 +59,18 @@ public class TopTracksFinder {
 		case "artist":
 			sb.append("&artist=");
 			sb.append(searchString);
-			sb.append("&autocorrect=1");
 			break;
 		default:
 			throw new IllegalArgumentException(
 					"Search method must be \"artist\" or \"tag\"");
 		}
+		sb.append("&autocorrect=1");
 		sb.append("&limit=");
-		sb.append(LAST_FM_LIMIT_OF_TRACKS);
+		sb.append(getLastFmLimitOfTracks());
 		sb.append("&api_key=");
 		sb.append(LAST_FM_API_KEY);
 		sb.append("&format=json");
+		System.out.println(sb);
 		return new URL(sb.toString());
 	}
 
@@ -87,19 +88,19 @@ public class TopTracksFinder {
 	public static TopTracks getTopTracksFromLastFm(String searchString,
 			String searchMethod) throws IOException {
 
-		TopTracks topTracks = new TopTracks(LAST_FM_LIMIT_OF_TRACKS);
+		TopTracks topTracks = new TopTracks(getLastFmLimitOfTracks());
 		URL requestURL = getLastFmRequestURL(searchString, searchMethod);
 		JSONArray tracklist = null;
 		tracklist = (JSONArray) JSONUtil.parse(requestURL);
 
-            for (Object tracklist1 : tracklist) {
-                JSONObject track = (JSONObject) tracklist1;
+            for (Object tracklistElement : tracklist) {
+                JSONObject track = (JSONObject) tracklistElement;
                 JSONObject artist = (JSONObject) track.get("artist");
                 JSONObject image = null;
                 if (track.get("image") != null) {
                     JSONArray images = (JSONArray) track.get("image");
-                    for (int j = 0; j < images.size(); j++) {
-                        image = (JSONObject) images.get(j);
+                    for (int i = 0; i < images.size(); i++) {
+                        image = (JSONObject) images.get(i);
                         if (image.get("size").equals("extralarge")) {
                             break;
                         }
@@ -108,19 +109,25 @@ public class TopTracksFinder {
                 String artistName = artist.get("name").toString();
                 String trackName = track.get("name").toString();
                 String trackduration;
-                // If duration is not found, it sets to 0
+                // Trying to find duration of track. If duration is not found, it sets to 0
                 try {
                 	trackduration = (track.get("duration").toString().equals("")) ? "0"
                 			: track.get("duration").toString();
                 } catch (NullPointerException e) {
                 	trackduration = "0";
                 }
-                String imageURL = (image == null) ? null : image.get("#text")
-					.toString();
-                topTracks.add(new Track(artistName, trackName, trackduration,
-					imageURL));
+                String imageURL = (image == null) ? null : image.get("#text") .toString();
+                topTracks.add(new Track(artistName, trackName, trackduration, imageURL));
             }
 		return topTracks;
+	}
 
+	public static int getLastFmLimitOfTracks() {
+		return lastFmLimitOfTracks;
+	}
+
+	public static void setLastFmLimitOfTracks(int lastFmLimitOfTracks) {
+		TopTracksFinder.lastFmLimitOfTracks = lastFmLimitOfTracks;
 	}
 }
+
