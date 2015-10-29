@@ -50,15 +50,15 @@ public class SoundJLayer {
         this.playlist = playlist;
         
         try {
-			fh = new FileHandler("log.txt");
-			fh.setLevel(Level.ALL);
+		fh = new FileHandler("log.txt");
+		fh.setLevel(Level.ALL);
 	    	fh.setFormatter(new SimpleFormatter());
 	    	LOGGER.addHandler(fh);
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	} catch (SecurityException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
     }
 
     /**
@@ -137,7 +137,7 @@ public class SoundJLayer {
                 ex.printStackTrace();
             }
         } else {
-        	// Wait ~0.3 second because
+            // Wait ~0.3 second because
             // vk.com API limits 3 requests in second
             try {
             	System.out.println("Waiting 350 ms...");
@@ -158,7 +158,7 @@ public class SoundJLayer {
                 try {
                 	playing = true;
                     if (trackURL != null) {
-                            // Notify listeners
+                        // Notify listeners
                         listeners.stream().forEach((playListener) -> playListener.playerStarts());
                         // create player and start playback
                         player = new AdvancedPlayer(bis);
