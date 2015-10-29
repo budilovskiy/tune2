@@ -1,6 +1,9 @@
 # tune2 (tune! v. 2)
 Project is at development stage now.
+
 See project page at http://budilovskiy.github.io/tune2
+
+Download Windows x86 version at https://goo.gl/0c6Frd 
 
 tune! is simple music player, which allows you to search and listen best tracks by tag or artist, according to last.fm charts
 
