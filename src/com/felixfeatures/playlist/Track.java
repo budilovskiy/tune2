@@ -64,11 +64,11 @@ public class Track {
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
 	}
-	
+
 	public void setURL(String URL) {
 		this.URL = URL;
 	}
-
+	
 	/**
 	 * Automatically set URL of Track instance using the static method of
 	 * TrackURLFinder.getURLfromVK(String fullTrackName, double duration)
@@ -80,7 +80,8 @@ public class Track {
 	 */
 	public String getURL() throws IOException {
 		if (URL == null) {
-			this.URL = TrackURLFinder.getURLfromVK(this);
+			String fullURL = TrackURLFinder.getURLfromVK(this);
+			this.URL = fullURL.substring(0, fullURL.indexOf("?extra", 0));
 		}
 		return URL;
 	}
@@ -88,9 +89,10 @@ public class Track {
 	// Get full String information of track
 	public String fullInfoToString() {
 		return artist + " - " + name + " : " + duration + " seconds"
-				+ "\nURL: " + URL + "\nimage: " + imageURL;
+				+ "\r\nURL: " + URL + "\r\nimg: " + imageURL;
 	}
-	
+
+
 	// Override methods from Object
 	@Override
 	public String toString() {
