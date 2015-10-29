@@ -4,14 +4,14 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * A TopTracks represents a simple collection of tracks
- * based on the array of elements of Track type
+ * A TopTracks represents a simple collection of tracks based on the array of
+ * elements of Track type
  * 
  */
 public class TopTracks {
 
 	// class constant for default size
-	private static final int DEFAULT_CAPACITY = TopTracksFinder.LAST_FM_LIMIT_OF_TRACKS;
+	private static final int DEFAULT_CAPACITY = TopTracksFinder.getLastFmLimitOfTracks();
 
 	// instance variables
 	// tracks store the elements of the list and
@@ -20,7 +20,7 @@ public class TopTracks {
 	private int size;
 
 	/**
-	 * Default constructor initialize capacity of array to default value. Have 
+	 * Default constructor initialize capacity of array to default value. Have
 	 * default access modifier to access it only within package.
 	 */
 	TopTracks() {
@@ -28,10 +28,11 @@ public class TopTracks {
 	}
 
 	/**
-	 * Constructor to allow user to specify initial capacity. Creates an empty 
+	 * Constructor to allow user to specify initial capacity. Creates an empty
 	 * list. Have default access modifier to access it only within package.
 	 * 
-	 * @param capacity > 0
+	 * @param capacity
+	 *            > 0
 	 */
 	TopTracks(int capacity) {
 		if (capacity < 0) {
@@ -47,7 +48,8 @@ public class TopTracks {
 	/**
 	 * Retrieve an element from the collection based on index.
 	 * 
-	 * @param index (0 <= index < size)
+	 * @param index
+	 *            (0 <= index < size)
 	 * @return element of collection by given index
 	 */
 	public Track getTrack(int index) {
@@ -93,12 +95,14 @@ public class TopTracks {
 	 * position greater than index are shifted to the left. (One subtracted from
 	 * their position.)
 	 * 
-	 * @param index - (0 <= index < size)
+	 * @param index
+	 *            - (0 <= index < size)
 	 * @return true if element is removed successfully
 	 */
 	public Track remove(int index) {
 		if (index < 0 || index >= size) {
-			throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+			throw new IndexOutOfBoundsException("Index: " + index + ", Size: "
+					+ size);
 		}
 
 		Track removed = tracks[index];
@@ -161,13 +165,12 @@ public class TopTracks {
 			return false;
 		}
 		TopTracks other = (TopTracks) obj;
-		
+
 		boolean result = (this.size == other.size);
 		int i = 0;
 		while (i < size && result) {
 			result = (this.tracks[i].equals(other.tracks[i]));
 		}
-
 		return result;
 	}
 
