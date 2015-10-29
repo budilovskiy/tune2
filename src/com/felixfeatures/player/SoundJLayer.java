@@ -9,17 +9,25 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+import com.felixfeatures.gui.AppGUI;
+import com.felixfeatures.playlist.TopTracks;
+import com.felixfeatures.playlist.Track;
 
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
-
-import com.felixfeatures.playlist.TopTracks;
-import com.felixfeatures.playlist.Track;
 
 /**
  * Manage playback with javazoom.jl.player.Player;
  */
 public class SoundJLayer {
+	
+	private static final Logger LOGGER = Logger.getLogger(AppGUI.class.getName());
+	private FileHandler fh;
 
     private static List<PlayListener> listeners = new ArrayList<>();
     private TopTracks playlist;
@@ -40,6 +48,17 @@ public class SoundJLayer {
      */
     public SoundJLayer(TopTracks playlist) {
         this.playlist = playlist;
+        
+        try {
+			fh = new FileHandler("log.txt");
+			fh.setLevel(Level.ALL);
+	    	fh.setFormatter(new SimpleFormatter());
+	    	LOGGER.addHandler(fh);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -72,9 +91,7 @@ public class SoundJLayer {
                 is.close();
                 connection.disconnect();
                 player = null;
-                for (PlayListener listener : listeners) {
-                    listener.PlayerStops();
-                }
+                listeners.stream().forEach((playListener) -> playListener.playerStops());
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -89,11 +106,17 @@ public class SoundJLayer {
         try {
             currentTrack = playlist.getRandomTrack(); // Get random track
             stringTrackURL = currentTrack.getURL();
-            System.out.println(currentTrack.fullInfoToString());
+            LOGGER.log(Level.INFO, "> {0}", currentTrack.fullInfoToString() + "\r\n");
+            playTrack(stringTrackURL);
         } catch (IOException | NullPointerException e) {	// Can not get track URL or playlist is null
-            e.printStackTrace();
+        	LOGGER.log(Level.WARNING, "Exception at track {0}", currentTrack + " : " + e);
+        	LOGGER.log(Level.WARNING, "Exception :", e);
+        	if (!playlist.isEmpty()) {
+        		play(); // Try to get URL of next track
+        	} else {
+        		LOGGER.log(Level.SEVERE, "Playlist is empty {0}", playlist);
+        	}
         }
-        playTrack(stringTrackURL);
     }
 
     /**
@@ -135,10 +158,8 @@ public class SoundJLayer {
                 try {
                 	playing = true;
                     if (trackURL != null) {
-                        // Notify listeners
-                        for (PlayListener listener : listeners) {
-                            listener.PlayerStarts();
-                        }
+                            // Notify listeners
+                        listeners.stream().forEach((playListener) -> playListener.playerStarts());
                         // create player and start playback
                         player = new AdvancedPlayer(bis);
                         player.play();
