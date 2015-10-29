@@ -1,25 +1,59 @@
 package com.felixfeatures.gui;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.plaf.FontUIResource;
 
-import com.felixfeatures.player.*;
-import com.felixfeatures.playlist.*;
+import com.felixfeatures.player.PlayListener;
+import com.felixfeatures.player.SoundJLayer;
+import com.felixfeatures.player.VolumeControl;
+import com.felixfeatures.playlist.TopTracks;
+import com.felixfeatures.playlist.TopTracksFinder;
+import com.felixfeatures.playlist.Track;
 import com.felixfeatures.util.TimeUtility;
 
 @SuppressWarnings("serial")
 public class AppGUI extends JFrame implements PlayListener {
-
-    public AppGUI() {
+	
+	public AppGUI() {
+    	try {
+			fh = new FileHandler("log.txt");
+			fh.setLevel(Level.ALL);
+	    	fh.setFormatter(new SimpleFormatter());
+	    	LOGGER.addHandler(fh);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         initComponents();
     }
 
@@ -74,12 +108,7 @@ public class AppGUI extends JFrame implements PlayListener {
             }
         });
         /* action */
-        searchField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                search(searchField.getText(), method);
-            }
-        });
+        searchField.addActionListener((e -> search(searchField.getText(), method)));
         searchField.setBounds(374, 31, 178, 22); // set absolute position and
         // size
         getContentPane().add(searchField); // add to main frame
@@ -98,6 +127,32 @@ public class AppGUI extends JFrame implements PlayListener {
         searchLabel.setBounds(557, 31, 20, 20); // set absolute position and size
         getContentPane().add(searchLabel); // add to main frame
 
+        //
+        // Create search slider labels
+        //
+        searchSliderMostPopular = new JLabel("most popular");
+        searchSliderMoreTracks = new JLabel("more tracks");
+        searchSliderMostPopular.setFont(new Font("", 0, 10));
+        searchSliderMoreTracks.setFont(new Font("", 0, 10));
+        searchSliderMostPopular.setForeground(new Color(105, 105, 105));
+        searchSliderMoreTracks.setForeground(new Color(105, 105, 105));
+        searchSliderMostPopular.setBounds(320, 60, 100, 15);
+        searchSliderMoreTracks.setBounds(520, 60, 100, 15);
+        getContentPane().add(searchSliderMostPopular);
+        getContentPane().add(searchSliderMoreTracks);
+        
+        //
+        // Create search slider and set behavior
+        //
+        searchSlider = new JSlider(10, 300, TopTracksFinder.getLastFmLimitOfTracks());
+        searchSlider.setBounds(400, 60, 100, 15);
+        searchSlider.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        searchSlider.setForeground(Color.BLUE);
+        searchSlider.addChangeListener((ChangeEvent e) -> {
+            TopTracksFinder.setLastFmLimitOfTracks(searchSlider.getValue());
+        });
+        getContentPane().add(searchSlider);
+        
         //
         // Create artist JTextField
         //
@@ -177,15 +232,12 @@ public class AppGUI extends JFrame implements PlayListener {
         volumeSlider.setBounds(350, 254, 224, 15);
         volumeSlider.setCursor(new Cursor(Cursor.HAND_CURSOR));
         volumeSlider.setForeground(Color.BLUE);
-        volumeSlider.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if (isMuted) {
-                    muteLabel.setIcon(unmuteIcon);
-                }
-                volumeControl.setValue(volumeSlider.getValue() / 100f);
-                isMuted = false;
+        volumeSlider.addChangeListener((ChangeEvent e) -> {
+            if (isMuted) {
+                muteLabel.setIcon(unmuteIcon);
             }
+            volumeControl.setValue(volumeSlider.getValue() / 100f);
+            isMuted = false;
         });
         getContentPane().add(volumeSlider);
 
@@ -230,18 +282,8 @@ public class AppGUI extends JFrame implements PlayListener {
         tagButton.putClientProperty("JComponent.sizeVariant", "mini");
         artistButton.putClientProperty("JComponent.sizeVariant", "mini");
         // Add listeners
-        tagButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                method = "tag";
-            }
-        });
-        artistButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                method = "artist";
-            }
-        });
+        tagButton.addActionListener(e -> method = "tag");
+        artistButton.addActionListener(e -> method = "artist");
         // Add buttons to group
         buttonGroup.add(tagButton);
         buttonGroup.add(artistButton);
@@ -306,7 +348,7 @@ public class AppGUI extends JFrame implements PlayListener {
         try {
         	// Create new playlist (may throw Exceptions)
             playlist = TopTracksFinder.getTopTracksFromLastFm(query, method);
-            System.out.println(playlist);
+            LOGGER.log(Level.INFO, "playlist {0}", playlist + "\r\n");
             // Create new JLayer instance
             player = new SoundJLayer(playlist);
             // Stop current playback
@@ -317,10 +359,11 @@ public class AppGUI extends JFrame implements PlayListener {
             durationField.setText("");
             imageLabel.setIcon(new ImageIcon()); // empty label
         } catch (IOException | IllegalStateException | IllegalArgumentException e) {
-            e.printStackTrace();
-            displayError(e.getMessage());
+        	LOGGER.log(Level.SEVERE, "search string is > " + (query.equals("") ? "empty" : query), e);
+        	displayError(e.getMessage());
         } catch (NullPointerException e) {
-            e.printStackTrace();
+        	LOGGER.log(Level.WARNING, "probably there is no such tag or artist", e);
+            //e.printStackTrace();
             displayError("probably there is no such tag or artist");
         }
     }
@@ -367,6 +410,7 @@ public class AppGUI extends JFrame implements PlayListener {
             BufferedImage image = ImageIO.read(new URL(currentTrack.getImageURL()));
             imageLabel.setIcon(new ImageIcon(image));
         } catch (Exception e) {
+        	LOGGER.log(Level.FINE, e.getMessage(), e);
             imageLabel.setIcon(new ImageIcon()); // empty label
         }
     }
@@ -386,7 +430,7 @@ public class AppGUI extends JFrame implements PlayListener {
      * Implement PlayerListener method
      */
     @Override
-    public void PlayerStarts() {
+    public void playerStarts() {
         currentTrack = player.getCurrentTack();
         displayTrackInfo(currentTrack);
         isPlaying = true;
@@ -396,7 +440,7 @@ public class AppGUI extends JFrame implements PlayListener {
      * Implement PlayerListener method
      */
     @Override
-    public void PlayerStops() {
+    public void playerStops() {
         isPlaying = false;
     }
 
@@ -417,7 +461,7 @@ public class AppGUI extends JFrame implements PlayListener {
                 // look and feel
                 UIManager.setLookAndFeel(UIManager
                         .getCrossPlatformLookAndFeelClassName());
-            } catch (Exception e1) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e1) {
                 e1.printStackTrace();
             }
         }
@@ -425,11 +469,8 @@ public class AppGUI extends JFrame implements PlayListener {
         final AppGUI frame = new AppGUI();
         SoundJLayer.addListener(frame); // Frame listens to JLayer player
 		/* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                frame.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            frame.setVisible(true);
         });
 
     }
@@ -461,11 +502,17 @@ public class AppGUI extends JFrame implements PlayListener {
             }
         }
     }
-
+    
+    private static final Logger LOGGER = Logger.getLogger(AppGUI.class.getName());
+    private FileHandler fh;
+    
     private JLabel closeLabel; // close label
     private JLabel minimizeLabel; // minimize label
     private JTextField searchField; // search Field
     private JLabel searchLabel; // search icon
+    private JSlider searchSlider; // search slider
+    private JLabel searchSliderMostPopular; // search slider label
+    private JLabel searchSliderMoreTracks; // search slider label
     private JTextField artistField; // track artist info field
     private JTextField nameField; // track name info field
     private JTextField durationField; // track duration info field
@@ -484,7 +531,7 @@ public class AppGUI extends JFrame implements PlayListener {
     private final Icon unmuteIcon = new ImageIcon(getClass().getResource("/unmute.png"));
     private final Icon muteIcon = new ImageIcon(getClass().getResource("/mute.png"));
     private final Icon playIcon = new ImageIcon(getClass().getResource("/play.png"));
-    private VolumeControl volumeControl = new VolumeControl();
+    private final VolumeControl volumeControl = new VolumeControl();
     private int previousVolume; // hold volume level when muted
     private boolean isMuted = false;
     private boolean isPlaying;
@@ -492,6 +539,6 @@ public class AppGUI extends JFrame implements PlayListener {
     private SoundJLayer player;
     private Track currentTrack;
     private String method = "tag"; //tag by default
-    private Point point = new Point(); // point to get position of frame when drag
+    private final Point point = new Point(); // point to get position of frame when drag
 
 }
