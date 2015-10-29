@@ -26,8 +26,8 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  */
 public class SoundJLayer {
 	
-	private static final Logger LOGGER = Logger.getLogger(AppGUI.class.getName());
-	private FileHandler fh;
+    private static final Logger LOGGER = Logger.getLogger(AppGUI.class.getName());
+    private FileHandler fh;
 
     private static List<PlayListener> listeners = new ArrayList<>();
     private TopTracks playlist;
