@@ -19,7 +19,7 @@ import org.json.simple.parser.ParseException;
 public class JSONUtil {
 
 	/**
-	 * Parse JSON data from given URL
+	 * Parse JSON data from given URL (last.fm or vk.com API) to JSONArray format
 	 * 
 	 * @param url
 	 *            - URL, where the JSON data is located
@@ -38,7 +38,8 @@ public class JSONUtil {
 		try {
 			response = getJSON(url);
 		} catch (IOException e) {
-			throw new IOException("Unable to open connection to " + url);
+			e.printStackTrace();
+			throw new IOException("looks like internet is broken");
 		}
 		
 		// Parse JSON data to get JSONArray according to URL (last.fm or vk.com
@@ -50,12 +51,19 @@ public class JSONUtil {
 		JSONArray res = null;
 		try {
 			jsonResponse = (JSONObject) parser.parse(response);
-			if (url.toString().contains("ws.audioscrobbler.com/2.0/?method")) { // last.fm API
-				toptracks = (JSONObject) jsonResponse.get("toptracks");
+			if (url.toString().contains("ws.audioscrobbler.com/2.0/?method=tag")) { // last.fm API
+				toptracks = (JSONObject) jsonResponse.get("tracks"); // response from tag search
 				try {
 				res = (JSONArray) toptracks.get("track");
 				} catch (NullPointerException e) {
-					throw new IllegalStateException("Problem while searching");
+					throw new IllegalStateException("problem while searching");
+				}
+			} else if (url.toString().contains("ws.audioscrobbler.com/2.0/?method=artist")) { // last.fm API
+				toptracks = (JSONObject) jsonResponse.get("toptracks"); // response from artist search
+				try {
+				res = (JSONArray) toptracks.get("track");
+				} catch (NullPointerException e) {
+					throw new IllegalStateException("problem while searching");
 				}
 			} else if (url.toString().contains("api.vk.com/method/audio.search")) { // vk.com API
 				res = (JSONArray) jsonResponse.get("response");
@@ -110,7 +118,6 @@ public class JSONUtil {
 				connection.disconnect();
 			}
 		}
-
 		return sb.toString();
 	}
 
