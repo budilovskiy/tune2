@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>tune! v.2 by budilovskiy</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="without-description">
+        <h1>tune! v.2</h1>
+        <p></p>
+        <p class="view"><a href="https://github.com/budilovskiy/tune2">View the Project on GitHub <small>budilovskiy/tune2</small></a></p>
+        <ul>
+          <li><a href="https://github.com/budilovskiy/tune2/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/budilovskiy/tune2/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/budilovskiy/tune2">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="tune-v-2" class="anchor" href="#tune-v-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>tune! v. 2</h1>
+
+<p>Project is at development stage now.</p>
+
+<p>tune! is simple music player, which allows you to search and listen best tracks by tag or artist, according to last.fm charts</p>
+
+<p>Fully redesigned architecture and UI</p>
+
+<ul>
+<li>using array with specified initial capacity to hold tracks in playlist to improve speed while creating and modifying playlist</li>
+<li>using response from last.fm and vk.com APIs in JSON format instead XML to improve speed while parsing</li>
+<li>added images and duration of tracks</li>
+<li>searching URL of tracks at vk.com according to its duration (received from last.fm API) to exclude remixes and false tracks</li>
+<li>added volume control</li>
+</ul>
+
+<p>Application uses third-party libraries and code:</p>
+
+<ul>
+<li>json-simple from Google <a href="https://code.google.com/p/json-simple/">https://code.google.com/p/json-simple/</a>
+</li>
+<li>JLayer 1.0.1 MP3 decoder/player/converter from Javazoom <a href="http://www.javazoom.net/javalayer/javalayer.html">http://www.javazoom.net/javalayer/javalayer.html</a>
+</li>
+<li>volume control utility founded on <a href="https://community.oracle.com/thread/1272842">https://community.oracle.com/thread/1272842</a>
+</li>
+</ul>
+
+<p><img src="https://cloud.githubusercontent.com/assets/11961551/10827638/c03fc1b0-7e78-11e5-9b2e-a069188ac79c.png" alt="screenshot"></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/budilovskiy">budilovskiy</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
