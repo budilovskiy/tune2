@@ -1,6 +1,6 @@
 package com.felixfeatures.player;
 
 public interface PlayListener {
-	    public void PlayerStarts();
-	    public void PlayerStops();
+	    public void playerStarts();
+	    public void playerStops();
 }
