@@ -1,130 +1,15 @@
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mInitial source changes: [0m
 [0m[[0mdebug[0m] [0m	removed:Set()[0m
-[0m[[0mdebug[0m] [0m	added: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java)[0m
+[0m[[0mdebug[0m] [0m	added: Set()[0m
 [0m[[0mdebug[0m] [0m	modified: Set()[0m
 [0m[[0mdebug[0m] [0mRemoved products: Set()[0m
 [0m[[0mdebug[0m] [0mExternal API changes: API Changes: Set()[0m
 [0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
-[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java)[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set()[0m
 [0m[[0mdebug[0m] [0m[0m
 [0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
 [0m[[0mdebug[0m] [0m	product: Set()[0m
 [0m[[0mdebug[0m] [0m	binary dep: Set()[0m
 [0m[[0mdebug[0m] [0m	external source: Set()[0m
-[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java)[0m
-[0m[[0mdebug[0m] [0mRecompiling all 10 sources: invalidated sources (10) exceeded 50.0% of all sources[0m
-[0m[[0minfo[0m] [0mCompiling 10 Java sources to C:\Users\Maxim\Documents\tune2\target\classes...[0m
-[0m[[0mdebug[0m] [0mAttempting to call com.sun.tools.javac.api.JavacTool@758982f6 directly...[0m
-[0m[[0mdebug[0m] [0mJava compilation took 5.204538706 s[0m
-[0m[[0mdebug[0m] [0mJava analysis took 1.072795085 s[0m
-[0m[[0mdebug[0m] [0mJava compile + analysis took 6.284477351 s[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	notify, duration, name, wait, setName, equals, getURL, URL, setURL, notifyAll, getName, setDuration, Track, <init>, artist, fullInfoToString, getImageURL, toString, setArtist, getClass, getDuration, getArtist, imageURL, setImageURL, setArtistAndName, hashCode.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	notify, wait, getVKRequestURL, equals, notifyAll, <init>, toString, getClass, VK_API_METHOD, getURLfromVK, VK_API_TOKEN, hashCode, TrackURLFinder.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\Track.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	notify, wait, size, equals, getRandomTrack, notifyAll, tracks, <init>, remove, DEFAULT_CAPACITY, toString, getClass, getTrack, TopTracks, isEmpty, add, hashCode.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	notify, wait, equals, notifyAll, <init>, getJSON, parse, toString, getClass, JSONUtil, hashCode.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	getContainerListeners, findComponentAt, addPropertyChangeListener, enable, ICONIFIED, notify, getFocusTraversalPolicy, mouseDown, setLocationByPlatform, firePropertyChange, playLabel, areFocusTraversalKeysSet, isShowing, setBackground, playlist, getAccessibleContext, isFocused, method, setTitle, muteLabel, paint, lostFocus, getInsets, access$800, name, addFocusListener, access$1400, createVolatileImage, createImage, removePropertyChangeListener, setExtendedState, move, printComponents, OTHER, Component$BaselineResizeBehavior, setJMenuBar, applyComponentOrientation, getOpacity, point, setPreferredSize, wait, setFocusCycleRoot, lambda$initComponents$2, CROSSHAIR_CURSOR, getCursor, addWindowListener, repaint, setComponentOrientation, keyDown, getShape, paintAll, show, doLayout, getWindows, WIDTH, location, setName, getTreeLock, valueOf, getContentPane, removeKeyListener, size, setMaximumSize, getJMenuBar, isResizable, getComponent, NW_RESIZE_CURSOR, setAutoRequestFocus, getBackground, isValid, removeWindowStateListener, isForegroundSet, mouseExited, getMouseListeners, getIconImages, setDefaultCloseOperation, handleEvent, setLayeredPane, isFocusTraversalPolicySet, isFocusTraversalPolicyProvider, setComponentZOrder, equals, MOVE_CURSOR, DISPOSE_ON_CLOSE, removeContainerListener, addWindowStateListener, access$702, background, gotFocus, searchSliderMostPopular, closeLabel, addWindowFocusListener, setFocusableWindowState, lambda$initComponents$1, DEFAULT_CURSOR, play, displayError, isMuted, setState, getComponentListeners, addComponentListener, print, getWarningString, HEIGHT, artistField, getFontMetrics, addNotify, initComponents, searchField, lambda$initComponents$3, addContainerListener, displayTrackInfo, transferFocusUpCycle, isPreferredSizeSet, POPUP, CONSTANT_ASCENT, access$1500, getDeclaringClass, validate, EXIT_ON_CLOSE, setLayout, setBounds, printAll, $VALUES, access$900, keyUp, setLocationRelativeTo, removeMouseMotionListener, mouseClicked, pack, getCursorType, removeWindowFocusListener, invalidate, DEFAULT_SEARCH_TEXT, mouseMove, tagButton, mouseReleased, mouseEnter, getTitle, getFrames, getWidth, getListeners, getFont, setType, setUndecorated, volumeSlider, removeWindowListener, ERROR, getLocale, access$200, countComponents, addHierarchyListener, access$402, getParent, muteIcon, getIgnoreRepaint, lambda$initComponents$0, getKeyListeners, paintComponents, isFontSet, artistButton, SW_RESIZE_CURSOR, previousVolume, TOP_ALIGNMENT, setFocusable, AppGUI, playerStarts, isFocusable, getWindowFocusListeners, deliverEvent, main, DO_NOTHING_ON_CLOSE, removeInputMethodListener, bounds, SOMEBITS, access$500, getMousePosition, checkImage, isDisplayable, getMouseMotionListeners, stop, getComponentCount, setOpacity, getAlignmentX, mouseMoved, AppGUI$LabelListener, access$1600, notifyAll, setIconImages, CENTER_ALIGNMENT, UTILITY, getName, addMouseListener, CENTER_OFFSET, postEvent, compareTo, getBufferStrategy, setDefaultLookAndFeelDecorated, stopLabel, HIDE_ON_CLOSE, isOpaque, isFocusableWindow, enableInputMethods, transferFocusDownCycle, reshape, getState, isLightweight, resize, TEXT_CURSOR, removeHierarchyListener, getForeground, fh, addInputMethodListener, MAXIMIZED_HORIZ, imageLabel, getBaselineResizeBehavior, requestFocusInWindow, getX, setDropTarget, getComponentOrientation, mouseExit, isAutoRequestFocus, <init>, NE_RESIZE_CURSOR, getIconImage, getColorModel, mousePressed, access$1000, lambda$initComponents$4, getDefaultCloseOperation, getFocusOwner, getToolkit, access$1200, player, remove, hide, getInputMethodRequests, ABORT, removeNotify, isAncestorOf, getPeer, S_RESIZE_CURSOR, access$1300, access$600, mouseWheelMoved, mouseEntered, access$100, getBaseline, ordinal, getMinimumSize, getMenuBar, setContentPane, setFocusTraversalPolicyProvider, getMaximizedBounds, getLayout, dispose, isLocationByPlatform, setGlassPane, this$0, PROPERTIES, getOwner, LOGGER, getDropTarget, toBack, getInputMethodListeners, getGraphics, createBufferStrategy, MAXIMIZED_BOTH, getOwnerlessWindows, mouseDrag, getGlassPane, getLocation, access$000, ALLBITS, getLocationOnScreen, setEnabled, setIgnoreRepaint, minimumSize, isFocusTraversable, getFocusableWindowState, BOTTOM_ALIGNMENT, dispatchEvent, setCursor, getMostRecentFocusOwner, mouseDragged, removeComponentListener, isActive, prepareImage, playerStops, isVisible, addMouseWheelListener, getType, searchLabel, transferFocusBackward, Window$Type, setForeground, disable, getHierarchyListeners, addKeyListener, SE_RESIZE_CURSOR, HAND_CURSOR, getWindowListeners, getAlignmentY, addHierarchyBoundsListener, W_RESIZE_CURSOR, setLocale, values, setModalExclusionType, setFont, getMaximumSize, toString, N_RESIZE_CURSOR, setMaximizedBounds, preferredSize, minimizeLabel, CONSTANT_DESCENT, getComponents, getComponentAt, volumeControl, setTransferHandler, E_RESIZE_CURSOR, isEnabled, isFocusOwner, isMinimumSizeSet, revalidate, access$700, getHeight, removeMouseWheelListener, nextFocus, imageUpdate, isBackgroundSet, nameField, insets, removeHierarchyBoundsListener, searchSliderMoreTracks, setMenuBar, getClass, getSize, layout, buttonGroup, currentTrack, setVisible, setShape, getFocusTraversalKeys, getComponentZOrder, update, unmuteIcon, setAlwaysOnTop, isAlwaysOnTopSupported, isMaximumSizeSet, getFocusListeners, RIGHT_ALIGNMENT, removeAll, isFocusCycleRoot, searchSlider, mouseUp, isAlwaysOnTop, getPreferredSize, durationField, contains, getY, transferFocus, getTransferHandler, removeFocusListener, lambda$main$5, isPlaying, setLocation, LEFT_ALIGNMENT, toFront, getPropertyChangeListeners, isCursorSet, add, isDoubleBuffered, isDefaultLookAndFeelDecorated, getInputContext, playIcon, nextLabel, getFocusCycleRootAncestor, getModalExclusionType, getWindowStateListeners, getRootPane, access$400, getExtendedState, access$1100, setMinimumSize, inside, getGraphicsConfiguration, hasFocus, action, setFocusTraversalKeys, getLayeredPane, isUndecorated, MAXIMIZED_VERT, requestFocus, getHierarchyBoundsListeners, NORMAL, FRAMEBITS, isValidateRoot, setIconImage, locate, setFocusTraversalPolicy, WAIT_CURSOR, list, addMouseMotionListener, setSize, applyResourceBundle, hashCode, removeMouseListener, getBounds, getOwnedWindows, getFocusTraversalKeysEnabled, getMouseWheelListeners, search, setResizable, setFocusTraversalKeysEnabled.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	notify, wait, equals, isControlValid, mixer, VolumeControl, notifyAll, lineOut, setValue, <init>, volControl, toString, getClass, getValue, close, hashCode.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\VolumeControl.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	notify, playlist, stringTrackURL, is, wait, listeners, equals, audioThread, access$202, play, access$200, stop, notifyAll, playTrack, access$300, fh, <init>, player, lambda$stop$6, access$100, LOGGER, access$000, toString, access$002, connection, playing, getClass, currentTrack, SoundJLayer, addListener, bis, getCurrentTack, hashCode.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java)[0m
-[0m[[0mdebug[0m] [0mIncluding C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java by C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java, C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	playerStarts, PlayListener, playerStops.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\PlayListener.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player\SoundJLayer.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	lastFmLimitOfTracks, notify, wait, equals, notifyAll, TopTracksFinder, <init>, setLastFmLimitOfTracks, getLastFmLimitOfTracks, toString, LAST_FM_API_KEY, getClass, getLastFmRequestURL, getTopTracksFromLastFm, hashCode.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracksFinder.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TopTracks.java[0m
-[0m[[0mdebug[0m] [0mInvalidating C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java...[0m
-[0m[[0mdebug[0m] [0mInvalidating (transitively) by inheritance from C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java...[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java)[0m
-[0m[[0mdebug[0m] [0mInvalidated by transitive inheritance dependency: Set(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java)[0m
-[0m[[0mdebug[0m] [0mThe C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m	notify, TimeUtility, wait, DIVIDER, equals, notifyAll, <init>, toString, getClass, convert, hashCode.[0m
-[0m[[0mdebug[0m] [0mAll member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI\AppGUI.java[0m
-[0m[[0mdebug[0m] [0mName hashing optimization doesn't apply to non-Scala dependency: C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java[0m
-[0m[[0mdebug[0m] [0mNew invalidations:[0m
-[0m[[0mdebug[0m] [0m	Set()[0m
-[0m[[0mdebug[0m] [0mInitial set of included nodes: Set()[0m
-[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
-[0m[[0mdebug[0m] [0m	Set()[0m
-[0m[[0mdebug[0m] [0mAll newly invalidated sources after taking into account (previously) recompiled sources:Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set()[0m

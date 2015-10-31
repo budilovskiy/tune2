@@ -1,10 +1,10 @@
 // Project name (artifact name in Maven)
-name := "(project name)"
+name := "(tune!)"
 
 // orgnization name (e.g., the package name of the project)
 organization := "com.felixfeatures.gui"
 
-version := "1.0-SNAPSHOT"
+version := "2.0"
 
 // project description
 description := "project"
@@ -21,6 +21,8 @@ autoScalaLibrary := false
 javaSource in Compile := baseDirectory.value / "src"
 
 mainClass in Compile := Some("com.felixfeatures.gui.AppGUI")
+
+resourceDirectory in Compile := baseDirectory.value / "src"
 
 // library dependencies. (orginization name) % (project name) % (version)
 libraryDependencies ++= Seq(

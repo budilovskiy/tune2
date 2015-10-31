@@ -1,0 +1,38 @@
+[0m[[0minfo[0m] [0mRunning com.felixfeatures.gui.AppGUI [0m
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
+[0m[[0mdebug[0m] [0m  Classpath:[0m
+[0m[[0mdebug[0m] [0m	C:\Users\Maxim\Documents\tune2\target\classes[0m
+[0m[[0mdebug[0m] [0m	C:\Users\Maxim\.ivy2\cache\com.googlecode.json-simple\json-simple\bundles\json-simple-1.1.1.jar[0m
+[0m[[0mdebug[0m] [0m	C:\Users\Maxim\.ivy2\cache\junit\junit\jars\junit-4.10.jar[0m
+[0m[[0mdebug[0m] [0m	C:\Users\Maxim\.ivy2\cache\org.hamcrest\hamcrest-core\jars\hamcrest-core-1.1.jar[0m
+[0m[[0mdebug[0m] [0m	C:\Users\Maxim\.ivy2\cache\javazoom\jlayer\jars\jlayer-1.0.1.jar[0m
+[0m[[0mdebug[0m] [0m	Thread run-main-0 exited.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread AWT-Shutdown to terminate.[0m
+[0m[[0mdebug[0m] [0mDisposing 1 top-level windows...[0m
+[0m[[0mdebug[0m] [0mWaiting 2 s to let AWT thread exit.[0m
+[0m[[0mdebug[0m] [0mInterrupting thread Thread-1[0m
+[0m[[0mdebug[0m] [0m	Interrupted Thread-1[0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[Thread-2,6,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[Java2D Disposer,10,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[AWT-Shutdown,5,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[AWT-Windows,6,system][0m
+[0m[[0mdebug[0m] [0mInterrupting thread AWT-EventQueue-0[0m
+[0m[[0mdebug[0m] [0m	Interrupted AWT-EventQueue-0[0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[D3D Screen Updater,7,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[Thread-3,6,system][0m
+[0m[[0mdebug[0m] [0m	Thread AWT-Shutdown exited.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread AWT-EventQueue-0 to terminate.[0m
+[0m[[0mdebug[0m] [0m	Thread AWT-EventQueue-0 exited.[0m
+[0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
+[0m[[0mdebug[0m] [0mDisposing 1 top-level windows...[0m
+[0m[[0mdebug[0m] [0mWaiting 2 s to let AWT thread exit.[0m
+[0m[[0mdebug[0m] [0mInterrupting thread Thread-1[0m
+[0m[[0mdebug[0m] [0m	Interrupted Thread-1[0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[Thread-2,6,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[Java2D Disposer,10,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[AWT-Windows,6,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[D3D Screen Updater,7,system][0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[Thread-3,6,system][0m
+[0m[[0mdebug[0m] [0mSandboxed run complete..[0m
+[0m[[0mdebug[0m] [0mExited with code 0[0m
