@@ -1,11 +1,6 @@
 [0m[[0mdebug[0m] [0mCopy resource mappings: [0m
 [0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\com,C:\Users\Maxim\Documents\tune2\target\classes\com)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\mute.png,C:\Users\Maxim\Documents\tune2\target\classes\mute.png)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\newUI.png,C:\Users\Maxim\Documents\tune2\target\classes\newUI.png)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\pause.png,C:\Users\Maxim\Documents\tune2\target\classes\pause.png)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\play.png,C:\Users\Maxim\Documents\tune2\target\classes\play.png)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\unmute.png,C:\Users\Maxim\Documents\tune2\target\classes\unmute.png)[0m
-[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\windowIcon.png,C:\Users\Maxim\Documents\tune2\target\classes\windowIcon.png)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\res,C:\Users\Maxim\Documents\tune2\target\classes\res)[0m
 [0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures,C:\Users\Maxim\Documents\tune2\target\classes\com\felixfeatures)[0m
 [0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\GUI,C:\Users\Maxim\Documents\tune2\target\classes\com\felixfeatures\GUI)[0m
 [0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\player,C:\Users\Maxim\Documents\tune2\target\classes\com\felixfeatures\player)[0m
@@ -21,3 +16,9 @@
 [0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\playlist\TrackURLFinder.java,C:\Users\Maxim\Documents\tune2\target\classes\com\felixfeatures\playlist\TrackURLFinder.java)[0m
 [0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\JSONUtil.java,C:\Users\Maxim\Documents\tune2\target\classes\com\felixfeatures\util\JSONUtil.java)[0m
 [0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\com\felixfeatures\util\TimeUtility.java,C:\Users\Maxim\Documents\tune2\target\classes\com\felixfeatures\util\TimeUtility.java)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\res\mute.png,C:\Users\Maxim\Documents\tune2\target\classes\res\mute.png)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\res\newUI.png,C:\Users\Maxim\Documents\tune2\target\classes\res\newUI.png)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\res\pause.png,C:\Users\Maxim\Documents\tune2\target\classes\res\pause.png)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\res\play.png,C:\Users\Maxim\Documents\tune2\target\classes\res\play.png)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\res\unmute.png,C:\Users\Maxim\Documents\tune2\target\classes\res\unmute.png)[0m
+[0m[[0mdebug[0m] [0m	(C:\Users\Maxim\Documents\tune2\src\res\windowIcon.png,C:\Users\Maxim\Documents\tune2\target\classes\res\windowIcon.png)[0m

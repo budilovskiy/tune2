@@ -22,7 +22,7 @@ javaSource in Compile := baseDirectory.value / "src"
 
 mainClass in Compile := Some("com.felixfeatures.gui.AppGUI")
 
-resourceDirectory in Compile := baseDirectory.value / "src"
+resourceDirectory in Compile := baseDirectory.value / "src/res"
 
 // library dependencies. (orginization name) % (project name) % (version)
 libraryDependencies ++= Seq(
