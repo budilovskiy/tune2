@@ -1,0 +1,6 @@
+compile
+sbt compile
+help
+project
+sbt
+exit

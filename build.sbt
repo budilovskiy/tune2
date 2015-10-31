@@ -7,7 +7,7 @@ organization := "com.felixfeatures.gui"
 version := "1.0-SNAPSHOT"
 
 // project description
-description := "project
+description := "project"
 
 // Enables publishing to maven repo
 publishMavenStyle := true
